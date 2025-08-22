@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Netlify optimizations
-  output: 'export',
-  trailingSlash: true,
-  distDir: 'out',
+  output: 'standalone',
   poweredByHeader: false,
   generateEtags: false,
   

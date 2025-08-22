@@ -9,5 +9,5 @@
   package = "@netlify/plugin-nextjs"
 
 [context.production.environment]
-  NEXTAUTH_URL = "https://nextmove-cargo-fixed.windsurf.build"
-  NEXTAUTH_SECRET = "your-secret-key-here"
+  NEXTAUTH_URL = "https://nextmove-cargo.netlify.app"
+  NEXTAUTH_SECRET = "nextmove-cargo-secret-key-2024-production-32chars"
