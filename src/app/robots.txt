@@ -1,0 +1,69 @@
+User-agent: *
+Allow: /
+
+# Pages importantes à indexer en priorité
+Allow: /
+Allow: /pricing
+Allow: /services
+Allow: /tracking
+Allow: /contact
+Allow: /about
+Allow: /blog
+
+# Pages multilingues
+Allow: /fr
+Allow: /en
+Allow: /fr/*
+Allow: /en/*
+
+# Pages de services spécialisés
+Allow: /services/*
+Allow: /destinations/*
+
+# Interdire l'indexation des pages privées
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /api/
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /_next/
+Disallow: /auth/
+Disallow: /private/
+
+# Interdire les fichiers système
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+Disallow: /.*
+
+# Fichiers autorisés
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /favicon.ico
+Allow: /manifest.json
+
+# Sitemap
+Sitemap: https://nextmove-cargo.com/sitemap.xml
+
+# Délai entre les requêtes (en secondes)
+Crawl-delay: 1
+
+# Spécifique à Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Spécifique à Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Interdire les bots malveillants
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

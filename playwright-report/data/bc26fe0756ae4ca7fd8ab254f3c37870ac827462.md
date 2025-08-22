@@ -1,0 +1,136 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - link "Retour à l'accueil" [ref=e6]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: Retour à l'accueil
+        - link [ref=e11]:
+          - /url: /
+          - img [ref=e13]
+      - generic [ref=e20]:
+        - img [ref=e23]
+        - heading "Connexion à votre compte" [level=2] [ref=e28]
+        - paragraph [ref=e29]: NextMove Chine-Afrique
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - button "👨‍💼 Admin" [ref=e34] [cursor=pointer]
+            - button "🏢 Entreprise" [ref=e35] [cursor=pointer]
+            - button "👤 Client" [ref=e36] [cursor=pointer]
+          - paragraph [ref=e37]: Accès administrateur à la plateforme
+        - generic [ref=e38]:
+          - paragraph [ref=e40]: Email ou mot de passe invalide
+          - generic [ref=e41]:
+            - generic [ref=e42]: Adresse email
+            - textbox "Entrez votre email" [ref=e44]: admin@platform.com
+          - generic [ref=e45]:
+            - generic [ref=e46]: Mot de passe
+            - generic [ref=e47]:
+              - textbox "Mot de passe" [ref=e48]: company123
+              - button "Afficher le mot de passe" [ref=e50] [cursor=pointer]:
+                - img [ref=e51] [cursor=pointer]
+          - button "Se connecter" [ref=e55] [cursor=pointer]
+        - generic [ref=e56]:
+          - generic [ref=e61]: Comptes de Démonstration
+          - generic [ref=e62]:
+            - paragraph [ref=e63]: "Pour les tests :"
+            - generic [ref=e64]:
+              - paragraph [ref=e65]:
+                - strong [ref=e66]: "👨‍💼 Admin:"
+                - code [ref=e67]: admin@platform.com / admin123
+              - paragraph [ref=e68]:
+                - strong [ref=e69]: "🏢 Entreprise:"
+                - code [ref=e70]: contact@logitrans.com / company123
+              - paragraph [ref=e71]:
+                - strong [ref=e72]: "👤 Client:"
+                - code [ref=e73]: client@example.com / client123
+    - contentinfo [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - heading "SaaS Logistique" [level=3] [ref=e78]
+            - paragraph [ref=e79]: Plateforme de gestion logistique entre la Chine et l'Afrique
+            - generic [ref=e80]:
+              - generic [ref=e81]:
+                - img [ref=e82]
+                - generic [ref=e85]: 123 Avenue de la Logistique, Abidjan, Côte d'Ivoire
+              - generic [ref=e86]:
+                - img [ref=e87]
+                - link "+225 01 23 45 67 89" [ref=e89]:
+                  - /url: tel:+225 01 23 45 67 89
+              - generic [ref=e90]:
+                - img [ref=e91]
+                - link "contact@saaslogistique.com" [ref=e94]:
+                  - /url: mailto:contact@saaslogistique.com
+          - generic [ref=e95]:
+            - heading "Liens rapides" [level=4] [ref=e96]
+            - list [ref=e97]:
+              - listitem [ref=e98]:
+                - link "Blog" [ref=e99]:
+                  - /url: /blog
+              - listitem [ref=e100]:
+                - link "Communauté" [ref=e101]:
+                  - /url: /community
+              - listitem [ref=e102]:
+                - link "Documentation" [ref=e103]:
+                  - /url: /documentation
+              - listitem [ref=e104]:
+                - link "Tarifs" [ref=e105]:
+                  - /url: /pricing
+          - generic [ref=e106]:
+            - heading "Services" [level=4] [ref=e107]
+            - list [ref=e108]:
+              - listitem [ref=e109]:
+                - link "Transport Maritime" [ref=e110]:
+                  - /url: /services/maritime
+              - listitem [ref=e111]:
+                - link "Transport Aérien" [ref=e112]:
+                  - /url: /services/aerien
+              - listitem [ref=e113]:
+                - link "Suivi de Colis" [ref=e114]:
+                  - /url: /track
+          - generic [ref=e115]:
+            - heading "Support" [level=4] [ref=e116]
+            - list [ref=e117]:
+              - listitem [ref=e118]:
+                - link "Centre d'Aide" [ref=e119]:
+                  - /url: /help
+              - listitem [ref=e120]:
+                - link "Contact" [ref=e121]:
+                  - /url: /contact
+              - listitem [ref=e122]:
+                - link "FAQ" [ref=e123]:
+                  - /url: /faq
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - paragraph [ref=e127]: © 2024 SaaS Logistique. Tous droits réservés.
+            - generic [ref=e128]:
+              - link "Mentions légales" [ref=e129]:
+                - /url: /legal
+              - link "Politique de confidentialité" [ref=e130]:
+                - /url: /legal
+              - link "Cookies" [ref=e131]:
+                - /url: /legal
+          - generic [ref=e132]:
+            - link "Suivez-nous sur facebook" [ref=e133]:
+              - /url: https://facebook.com/saaslogistique
+              - img [ref=e134]
+            - link "Suivez-nous sur twitter" [ref=e136]:
+              - /url: https://twitter.com/saaslogistique
+              - img [ref=e137]
+            - link "Suivez-nous sur linkedin" [ref=e139]:
+              - /url: https://linkedin.com/company/saaslogistique
+              - img [ref=e140]
+    - generic [ref=e145]:
+      - button "Ouvrir le Support" [ref=e146] [cursor=pointer]:
+        - img [ref=e147] [cursor=pointer]
+      - generic [ref=e151]: "!"
+      - generic:
+        - generic: 💬 Support - Disponible 24/7
+  - alert [ref=e152]
+```

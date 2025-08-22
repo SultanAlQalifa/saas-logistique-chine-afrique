@@ -1,0 +1,68 @@
+{
+  "name": "NextMove - Chine Afrique",
+  "short_name": "NextMove",
+  "description": "Plateforme de gestion logistique entre la Chine et l'Afrique",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo-nextmove.svg",
+      "sizes": "72x72 96x96 128x128 144x144 152x152 192x192 256x256 384x384 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-simple.svg",
+      "sizes": "144x144",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["business", "productivity", "logistics"],
+  "lang": "fr",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Mes Colis",
+      "short_name": "Colis",
+      "description": "Suivre mes expéditions",
+      "url": "/dashboard/client-portal",
+      "icons": [{ "src": "/icons/icon-simple.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Support Client",
+      "short_name": "Support",
+      "description": "Contacter le support",
+      "url": "/dashboard/client-portal",
+      "icons": [{ "src": "/icons/icon-simple.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Suivi Colis",
+      "short_name": "Suivi",
+      "description": "Suivre un colis par numéro",
+      "url": "/track",
+      "icons": [{ "src": "/icons/icon-simple.svg", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard principal"
+    },
+    {
+      "src": "/screenshots/mobile-client.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Interface client mobile"
+    }
+  ]
+}

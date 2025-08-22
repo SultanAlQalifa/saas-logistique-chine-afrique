@@ -1,0 +1,137 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - navigation "Navigation principale" [ref=e5]:
+        - img [ref=e9]
+        - generic [ref=e13]:
+          - button "dashboard.title" [ref=e15] [cursor=pointer]:
+            - img [ref=e17] [cursor=pointer]
+          - button "Commissions" [ref=e23] [cursor=pointer]:
+            - img [ref=e25] [cursor=pointer]
+          - button "Programme Fidélité" [ref=e28] [cursor=pointer]:
+            - img [ref=e30] [cursor=pointer]
+          - button "Mon Compte" [ref=e37] [cursor=pointer]:
+            - img [ref=e39] [cursor=pointer]
+      - generic [ref=e43]:
+        - generic [ref=e46]:
+          - button "3" [ref=e48] [cursor=pointer]:
+            - img [ref=e49] [cursor=pointer]
+            - generic [ref=e52] [cursor=pointer]: "3"
+          - button "🇫🇷 FR" [ref=e54] [cursor=pointer]:
+            - img [ref=e55] [cursor=pointer]
+            - text: 🇫🇷 FR
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - paragraph [ref=e61]: Utilisateur Admin
+              - paragraph [ref=e62]: Mode Test
+            - link "Site Public" [ref=e63] [cursor=pointer]:
+              - /url: /
+              - img [ref=e64] [cursor=pointer]
+              - text: Site Public
+            - button "Déconnexion" [ref=e67] [cursor=pointer]:
+              - img [ref=e68] [cursor=pointer]
+              - text: Déconnexion
+        - main [ref=e71]:
+          - generic [ref=e74]:
+            - img [ref=e76]
+            - heading "Accès Refusé" [level=1] [ref=e78]
+            - paragraph [ref=e79]: Vous n'avez pas les permissions nécessaires pour accéder au dashboard.
+            - paragraph [ref=e81]: "Votre rôle:"
+      - generic [ref=e83]:
+        - button "Ouvrir le Support" [ref=e84] [cursor=pointer]:
+          - img [ref=e85] [cursor=pointer]
+        - generic [ref=e89]: "!"
+        - generic:
+          - generic: 💬 Support - Disponible 24/7
+      - generic [ref=e90]:
+        - button [ref=e91] [cursor=pointer]:
+          - img [ref=e92] [cursor=pointer]
+        - generic [ref=e94]: Calculateur de Prix
+    - contentinfo [ref=e95]:
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - heading "SaaS Logistique" [level=3] [ref=e99]
+            - paragraph [ref=e100]: Plateforme de gestion logistique entre la Chine et l'Afrique
+            - generic [ref=e101]:
+              - generic [ref=e102]:
+                - img [ref=e103]
+                - generic [ref=e106]: 123 Avenue de la Logistique, Abidjan, Côte d'Ivoire
+              - generic [ref=e107]:
+                - img [ref=e108]
+                - link "+225 01 23 45 67 89" [ref=e110] [cursor=pointer]:
+                  - /url: tel:+225 01 23 45 67 89
+              - generic [ref=e111]:
+                - img [ref=e112]
+                - link "contact@saaslogistique.com" [ref=e115] [cursor=pointer]:
+                  - /url: mailto:contact@saaslogistique.com
+          - generic [ref=e116]:
+            - heading "Liens rapides" [level=4] [ref=e117]
+            - list [ref=e118]:
+              - listitem [ref=e119]:
+                - link "Blog" [ref=e120] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e121]:
+                - link "Communauté" [ref=e122] [cursor=pointer]:
+                  - /url: /community
+              - listitem [ref=e123]:
+                - link "Documentation" [ref=e124] [cursor=pointer]:
+                  - /url: /documentation
+              - listitem [ref=e125]:
+                - link "Tarifs" [ref=e126] [cursor=pointer]:
+                  - /url: /pricing
+          - generic [ref=e127]:
+            - heading "Services" [level=4] [ref=e128]
+            - list [ref=e129]:
+              - listitem [ref=e130]:
+                - link "Transport Maritime" [ref=e131] [cursor=pointer]:
+                  - /url: /services/maritime
+              - listitem [ref=e132]:
+                - link "Transport Aérien" [ref=e133] [cursor=pointer]:
+                  - /url: /services/aerien
+              - listitem [ref=e134]:
+                - link "Suivi de Colis" [ref=e135] [cursor=pointer]:
+                  - /url: /track
+          - generic [ref=e136]:
+            - heading "Support" [level=4] [ref=e137]
+            - list [ref=e138]:
+              - listitem [ref=e139]:
+                - link "Centre d'Aide" [ref=e140] [cursor=pointer]:
+                  - /url: /help
+              - listitem [ref=e141]:
+                - link "Contact" [ref=e142] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e143]:
+                - link "FAQ" [ref=e144] [cursor=pointer]:
+                  - /url: /faq
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - paragraph [ref=e148]: © 2024 SaaS Logistique. Tous droits réservés.
+            - generic [ref=e149]:
+              - link "Mentions légales" [ref=e150] [cursor=pointer]:
+                - /url: /legal
+              - link "Politique de confidentialité" [ref=e151] [cursor=pointer]:
+                - /url: /legal
+              - link "Cookies" [ref=e152] [cursor=pointer]:
+                - /url: /legal
+          - generic [ref=e153]:
+            - link "Suivez-nous sur facebook" [ref=e154] [cursor=pointer]:
+              - /url: https://facebook.com/saaslogistique
+              - img [ref=e155] [cursor=pointer]
+            - link "Suivez-nous sur twitter" [ref=e157] [cursor=pointer]:
+              - /url: https://twitter.com/saaslogistique
+              - img [ref=e158] [cursor=pointer]
+            - link "Suivez-nous sur linkedin" [ref=e160] [cursor=pointer]:
+              - /url: https://linkedin.com/company/saaslogistique
+              - img [ref=e161] [cursor=pointer]
+    - generic [ref=e166]:
+      - button "Ouvrir le Support" [ref=e167] [cursor=pointer]:
+        - img [ref=e168] [cursor=pointer]
+      - generic [ref=e172]: "!"
+      - generic:
+        - generic: 💬 Support - Disponible 24/7
+  - alert [ref=e173]: NextMove - Chine Afrique
+```

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextMove Cargo - Palette de Couleurs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #0066CC 0%, #FF6B35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            margin-bottom: 1.5rem;
+            color: #212529;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .color-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-preview {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-info {
+            padding: 1rem;
+            background: white;
+        }
+        
+        .color-name {
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 0.5rem;
+        }
+        
+        .color-code {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #f8f9fa;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+        
+        .color-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        
+        /* Option 1: Corporate Moderne */
+        .bleu-marine { background-color: #1E3A8A; }
+        .gris-anthracite { background-color: #374151; }
+        .turquoise { background-color: #06B6D4; }
+        .vert-succes { background-color: #10B981; }
+        
+        /* Option 2: Minimaliste Élégante */
+        .noir-profond { background-color: #0F172A; }
+        .gris-perle { background-color: #F1F5F9; color: #212529 !important; }
+        .bleu-ciel { background-color: #3B82F6; }
+        .violet-accent { background-color: #8B5CF6; }
+        .orange-subtil { background-color: #F97316; }
+        
+        /* Option 3: Terre & Océan */
+        .bleu-profond { background-color: #1E40AF; }
+        .beige-sable { background-color: #F5F5DC; color: #212529 !important; }
+        .vert-foret { background-color: #059669; }
+        .marron-cuir { background-color: #92400E; }
+        .blanc-casse { background-color: #FAFAFA; color: #212529 !important; border: 2px solid #e9ecef; }
+        
+        /* Couleurs neutres */
+        .blanc-pur { background-color: #FFFFFF; color: #212529 !important; border: 2px solid #e9ecef; }
+        .gris-clair { background-color: #F8F9FA; color: #212529 !important; }
+        .gris-moyen { background-color: #6C757D; }
+        .noir-charbon { background-color: #212529; }
+        
+        /* Gradients */
+        .gradient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gradient-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gradient-preview {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Gradients Assombris NextMove */
+        .gradient-purple-dark { background: linear-gradient(135deg, #7c2d12 0%, #be185d 100%); }
+        .gradient-blue-dark { background: linear-gradient(135deg, #1d4ed8 0%, #0e7490 100%); }
+        .gradient-green-dark { background: linear-gradient(135deg, #15803d 0%, #047857 100%); }
+        .gradient-cargo-dark { background: linear-gradient(135deg, #1e40af 0%, #7c2d12 100%); }
+        .gradient-ocean-dark { background: linear-gradient(135deg, #0e7490 0%, #1d4ed8 100%); }
+        .gradient-success-dark { background: linear-gradient(135deg, #047857 0%, #15803d 100%); }
+        
+        /* Exemples d'application */
+        .demo-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-header {
+            padding: 1rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .demo-content {
+            padding: 1.5rem;
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, #0066CC 0%, #FF6B35 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .demo-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .icon-item {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #0066CC15 0%, #FF6B3515 100%);
+            border-radius: 10px;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 NextMove Cargo - Couleurs Assombries</h1>
+        
+        <!-- Couleurs Actuelles Assombries -->
+        <div class="section">
+            <h2>🎨 Couleurs Actuelles - Version Assombrie</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: #7c2d12;">Purple Assombri</div>
+                    <div class="color-info">
+                        <div class="color-name">Purple Assombri</div>
+                        <div class="color-code">#7c2d12 (était #a855f7)</div>
+                        <div class="color-description">Meilleur contraste, plus professionnel</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: #be185d;">Pink Assombri</div>
+                    <div class="color-info">
+                        <div class="color-name">Pink Assombri</div>
+                        <div class="color-code">#be185d (était #ec4899)</div>
+                        <div class="color-description">Plus élégant, moins flashy</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: #1d4ed8;">Blue Assombri</div>
+                    <div class="color-info">
+                        <div class="color-name">Blue Assombri</div>
+                        <div class="color-code">#1d4ed8 (était #3b82f6)</div>
+                        <div class="color-description">Transport maritime, confiance</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: #0e7490;">Cyan Assombri</div>
+                    <div class="color-info">
+                        <div class="color-name">Cyan Assombri</div>
+                        <div class="color-code">#0e7490 (était #06b6d4)</div>
+                        <div class="color-description">Innovation, technologie</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: #15803d;">Green Assombri</div>
+                    <div class="color-info">
+                        <div class="color-name">Green Assombri</div>
+                        <div class="color-code">#15803d (était #22c55e)</div>
+                        <div class="color-description">Succès, croissance, validation</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: #047857;">Emerald Assombri</div>
+                    <div class="color-info">
+                        <div class="color-name">Emerald Assombri</div>
+                        <div class="color-code">#047857 (était #10b981)</div>
+                        <div class="color-description">Nature, durabilité</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Option 2: Minimaliste Élégante -->
+        <div class="section">
+            <h2>✨ Option 2: Minimaliste Élégante</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-preview noir-profond">Noir Profond</div>
+                    <div class="color-info">
+                        <div class="color-name">Noir Profond</div>
+                        <div class="color-code">#0F172A</div>
+                        <div class="color-description">Élégance, sophistication</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview gris-perle">Gris Perle</div>
+                    <div class="color-info">
+                        <div class="color-name">Gris Perle</div>
+                        <div class="color-code">#F1F5F9</div>
+                        <div class="color-description">Douceur, clarté</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview bleu-ciel">Bleu Ciel</div>
+                    <div class="color-info">
+                        <div class="color-name">Bleu Ciel</div>
+                        <div class="color-code">#3B82F6</div>
+                        <div class="color-description">Fraîcheur, confiance</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview violet-accent">Violet Accent</div>
+                    <div class="color-info">
+                        <div class="color-name">Violet Accent</div>
+                        <div class="color-code">#8B5CF6</div>
+                        <div class="color-description">Modernité, innovation</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview orange-subtil">Orange Subtil</div>
+                    <div class="color-info">
+                        <div class="color-name">Orange Subtil</div>
+                        <div class="color-code">#F97316</div>
+                        <div class="color-description">Énergie contrôlée</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Option 3: Terre & Océan -->
+        <div class="section">
+            <h2>🌍 Option 3: Terre & Océan</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-preview bleu-profond">Bleu Profond</div>
+                    <div class="color-info">
+                        <div class="color-name">Bleu Profond</div>
+                        <div class="color-code">#1E40AF</div>
+                        <div class="color-description">Océan, profondeur</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview beige-sable">Beige Sable</div>
+                    <div class="color-info">
+                        <div class="color-name">Beige Sable</div>
+                        <div class="color-code">#F5F5DC</div>
+                        <div class="color-description">Terre africaine, chaleur</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview vert-foret">Vert Forêt</div>
+                    <div class="color-info">
+                        <div class="color-name">Vert Forêt</div>
+                        <div class="color-code">#059669</div>
+                        <div class="color-description">Nature, croissance</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview marron-cuir">Marron Cuir</div>
+                    <div class="color-info">
+                        <div class="color-name">Marron Cuir</div>
+                        <div class="color-code">#92400E</div>
+                        <div class="color-description">Authenticité, tradition</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview blanc-casse">Blanc Cassé</div>
+                    <div class="color-info">
+                        <div class="color-name">Blanc Cassé</div>
+                        <div class="color-code">#FAFAFA</div>
+                        <div class="color-description">Pureté, simplicité</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Couleurs Neutres -->
+        <div class="section">
+            <h2>⚪ Couleurs Neutres</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-preview blanc-pur">Blanc Pur</div>
+                    <div class="color-info">
+                        <div class="color-name">Blanc Pur</div>
+                        <div class="color-code">#FFFFFF</div>
+                        <div class="color-description">Backgrounds, cartes, espaces</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview gris-clair">Gris Clair</div>
+                    <div class="color-info">
+                        <div class="color-name">Gris Clair</div>
+                        <div class="color-code">#F8F9FA</div>
+                        <div class="color-description">Backgrounds secondaires, sections</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview gris-moyen">Gris Moyen</div>
+                    <div class="color-info">
+                        <div class="color-name">Gris Moyen</div>
+                        <div class="color-code">#6C757D</div>
+                        <div class="color-description">Textes secondaires, bordures</div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-preview noir-charbon">Noir Charbon</div>
+                    <div class="color-info">
+                        <div class="color-name">Noir Charbon</div>
+                        <div class="color-code">#212529</div>
+                        <div class="color-description">Textes principaux, headers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gradients Assombris NextMove -->
+        <div class="section">
+            <h2>🌈 Gradients Assombris NextMove</h2>
+            <div class="gradient-grid">
+                <div class="gradient-card">
+                    <div class="gradient-preview gradient-purple-dark">Purple Principal</div>
+                    <div class="color-info">
+                        <div class="color-name">Purple Principal Assombri</div>
+                        <div class="color-code">linear-gradient(135deg, #7c2d12 0%, #be185d 100%)</div>
+                        <div class="color-description">Boutons primaires, headers</div>
+                    </div>
+                </div>
+                
+                <div class="gradient-card">
+                    <div class="gradient-preview gradient-blue-dark">Blue Maritime</div>
+                    <div class="color-info">
+                        <div class="color-name">Blue Maritime Assombri</div>
+                        <div class="color-code">linear-gradient(135deg, #1d4ed8 0%, #0e7490 100%)</div>
+                        <div class="color-description">Transport, technologie</div>
+                    </div>
+                </div>
+                
+                <div class="gradient-card">
+                    <div class="gradient-preview gradient-green-dark">Green Succès</div>
+                    <div class="color-info">
+                        <div class="color-name">Green Succès Assombri</div>
+                        <div class="color-code">linear-gradient(135deg, #15803d 0%, #047857 100%)</div>
+                        <div class="color-description">Confirmations, validations</div>
+                    </div>
+                </div>
+                
+                <div class="gradient-card">
+                    <div class="gradient-preview gradient-cargo-dark">Cargo NextMove</div>
+                    <div class="color-info">
+                        <div class="color-name">Cargo NextMove</div>
+                        <div class="color-code">linear-gradient(135deg, #1e40af 0%, #7c2d12 100%)</div>
+                        <div class="color-description">Identité NextMove, headers</div>
+                    </div>
+                </div>
+                
+                <div class="gradient-card">
+                    <div class="gradient-preview gradient-ocean-dark">Océan Profond</div>
+                    <div class="color-info">
+                        <div class="color-name">Océan Profond</div>
+                        <div class="color-code">linear-gradient(135deg, #0e7490 0%, #1d4ed8 100%)</div>
+                        <div class="color-description">Transport maritime, innovation</div>
+                    </div>
+                </div>
+                
+                <div class="gradient-card">
+                    <div class="gradient-preview gradient-success-dark">Succès Naturel</div>
+                    <div class="color-info">
+                        <div class="color-name">Succès Naturel</div>
+                        <div class="color-code">linear-gradient(135deg, #047857 0%, #15803d 100%)</div>
+                        <div class="color-description">Nature, croissance durable</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Icônes Thématiques -->
+        <div class="section">
+            <h2>🚢 Icônes Thématiques</h2>
+            <div class="icon-grid">
+                <div class="icon-item">🚢</div>
+                <div class="icon-item">✈️</div>
+                <div class="icon-item">🚛</div>
+                <div class="icon-item">📦</div>
+                <div class="icon-item">🌍</div>
+                <div class="icon-item">⚓</div>
+                <div class="icon-item">🏗️</div>
+                <div class="icon-item">🛳️</div>
+            </div>
+        </div>
+        
+        <!-- Exemples d'Application -->
+        <div class="section">
+            <h2>💼 Exemples d'Application</h2>
+            <div class="demo-section">
+                <div class="demo-card">
+                    <div class="demo-header gradient-principal">
+                        🚢 Suivi de Colis
+                    </div>
+                    <div class="demo-content">
+                        <p>Votre colis <strong>NMC-2024-001</strong> est en transit vers Dakar.</p>
+                        <br>
+                        <button class="demo-button">Voir les détails</button>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-header gradient-succes">
+                        ✅ Livraison Réussie
+                    </div>
+                    <div class="demo-content">
+                        <p>Félicitations ! Votre colis a été livré avec succès.</p>
+                        <br>
+                        <button class="demo-button">Évaluer le service</button>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-header gradient-alerte">
+                        ⚠️ Attention Requise
+                    </div>
+                    <div class="demo-content">
+                        <p>Documents douaniers manquants pour votre expédition.</p>
+                        <br>
+                        <button class="demo-button">Compléter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

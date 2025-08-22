@@ -1,0 +1,24 @@
+{
+  "title": "NextMove",
+  "subtitle": "Chine-Afrique",
+  "description": "La plateforme de référence pour vos échanges commerciaux entre la Chine et l'Afrique. Suivi en temps réel, transparence totale, livraison garantie.",
+  "heroTitle": "Connectez la Chine à l'Afrique",
+  "heroSubtitle": "Simplifiez vos échanges commerciaux avec notre plateforme tout-en-un",
+  "ctaText": "Commencer maintenant",
+  "features": [
+    {
+      "title": "Suivi en temps réel",
+      "description": "Suivez vos cargaisons en direct depuis la Chine jusqu'en Afrique"
+    },
+    {
+      "title": "Transparence totale",
+      "description": "Accès complet aux informations de transport et douanes"
+    },
+    {
+      "title": "Livraison garantie",
+      "description": "Assurance et garantie sur toutes vos expéditions"
+    }
+  ],
+  "lastUpdated": "2025-01-17T21:28:00.000Z",
+  "updatedBy": "system"
+}

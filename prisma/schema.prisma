@@ -1,0 +1,954 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Subscription plans
+enum PlanType {
+  FREE
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  TRIAL
+}
+
+// Multi-tenant Company model
+model Company {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  address   String?
+  country   String?
+  city      String?
+  
+  // Subscription info
+  planType           PlanType           @default(FREE)
+  subscriptionStatus SubscriptionStatus @default(TRIAL)
+  trialEndsAt        DateTime?
+  subscriptionEndsAt DateTime?
+  
+  // Limits based on plan
+  maxUsers           Int                @default(5)
+  maxPackagesPerMonth Int               @default(100)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  subscriptions   Subscription[]
+  invoices        Invoice[]
+  clients         Client[]
+  cargos          Cargo[]
+  packages        Package[]
+  users           User[]
+  orders          Order[]
+  settings        CompanySettings?
+  paymentModes    TenantPaymentMode[]
+  paymentProviders TenantPaymentProvider[]
+  payoutRequests  PayoutRequest[]
+  paymentLimits   TenantPaymentLimit[]
+
+  @@map("companies")
+}
+
+// Company-specific settings
+model CompanySettings {
+  id        String @id @default(cuid())
+  companyId String @unique
+  
+  // Pricing settings
+  aerialPricePerKg     Float @default(5.0)   // €/kg for aerial
+  maritimePricePerCbm  Float @default(150.0) // €/CBM for maritime
+  
+  // Default ETA settings (in days)
+  aerialEtaDays        Int @default(7)
+  aerialExpressEtaDays Int @default(3)
+  maritimeEtaDays      Int @default(60)
+  maritimeExpressEtaDays Int @default(45)
+  
+  // Company branding
+  logo        String?
+  primaryColor String @default("#3b82f6")
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@map("company_settings")
+}
+
+// User roles: SUPER_ADMIN, ADMIN, AGENT, CLIENT, AFFILIATE
+enum UserRole {
+  SUPER_ADMIN  // Propriétaire plateforme
+  ADMIN        // Admin entreprise (tenant)
+  AGENT        // Employé entreprise
+  CLIENT       // Utilisateur final
+  AFFILIATE    // Partenaire affilié
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      UserRole @default(CLIENT)
+  companyId String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  company   Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  affiliate Affiliate?
+  createdPayouts PayoutRequest[] @relation("PayoutCreatedBy")
+  reviewedPayouts PayoutRequest[] @relation("PayoutReviewedBy")
+  
+  // NextAuth
+  accounts Account[]
+  sessions Session[]
+
+  @@map("users")
+}
+
+// NextAuth models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// Client model with auto-generated ID CL-XXX
+model Client {
+  id        String   @id @default(cuid())
+  clientId  String   @unique // Auto-generated: CL-001, CL-002, etc.
+  companyId String
+  
+  name      String
+  email     String?
+  phone     String?
+  address   String?
+  country   String?
+  city      String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  company  Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  packages Package[]
+
+  @@map("clients")
+}
+
+// Transport modes
+enum TransportMode {
+  AERIAL
+  AERIAL_EXPRESS
+  MARITIME
+  MARITIME_EXPRESS
+}
+
+// Cargo status workflow
+enum CargoStatus {
+  PLANNED    // Prévu
+  IN_TRANSIT // En route
+  ARRIVED    // Arrivé
+  COMPLETED  // Terminé
+}
+
+// Cargo model with auto-generated ID CG+MM+NNN
+model Cargo {
+  id        String      @id @default(cuid())
+  cargoId   String      @unique // Auto-generated: CG0124001 (CG + YYMM + NNN)
+  companyId String
+  
+  transportMode TransportMode
+  carrier       String?       // Transporteur
+  
+  // Ports/Airports
+  originPort      String
+  destinationPort String
+  
+  // Dates
+  departureDate DateTime?
+  arrivalDate   DateTime?
+  estimatedArrival DateTime?
+  
+  status CargoStatus @default(PLANNED)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  company  Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  packages Package[]
+
+  @@map("cargos")
+}
+
+// Package status workflow
+enum PackageStatus {
+  PLANNED    // Prévu
+  IN_TRANSIT // En route
+  ARRIVED    // Arrivé
+  COLLECTED  // Retiré
+}
+
+// Package model with auto-generated ID CO-XXX
+model Package {
+  id        String        @id @default(cuid())
+  packageId String        @unique // Auto-generated: CO-001, CO-002, etc.
+  companyId String
+  clientId  String
+  cargoId   String?
+  
+  // Package details
+  description   String
+  weight        Float         // in kg
+  length        Float?        // in cm
+  width         Float?        // in cm
+  height        Float?        // in cm
+  
+  // Calculated fields
+  cbm           Float?        // Calculated: (L×W×H)/1000000
+  transportMode TransportMode
+  
+  // Pricing
+  calculatedPrice Float?      // Auto-calculated based on mode
+  finalPrice      Float?      // Final price (can be manually adjusted)
+  
+  // Tracking
+  trackingPin   String        @unique // 6-digit PIN for tracking
+  qrCode        String?       // QR code data
+  status        PackageStatus @default(PLANNED)
+  
+  // Dates
+  estimatedArrival DateTime?
+  actualArrival    DateTime?
+  collectedAt      DateTime?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  client  Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  cargo   Cargo?  @relation(fields: [cargoId], references: [id], onDelete: SetNull)
+
+  @@map("packages")
+}
+
+// Subscription management
+model Subscription {
+  id        String   @id @default(cuid())
+  companyId String   @unique
+  planType  PlanType
+  status    SubscriptionStatus
+  
+  // Billing
+  monthlyPrice    Float
+  yearlyPrice     Float?
+  billingCycle    String  @default("monthly") // monthly, yearly
+  nextBillingDate DateTime?
+  
+  // Stripe integration
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  @@map("subscriptions")
+}
+
+// Invoice management
+model Invoice {
+  id        String   @id @default(cuid())
+  companyId String
+  
+  invoiceNumber String   @unique
+  amount        Float
+  currency      String   @default("EUR")
+  status        String   @default("pending") // pending, paid, failed
+  dueDate       DateTime
+  paidAt        DateTime?
+  
+  // Stripe
+  stripeInvoiceId String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  @@map("invoices")
+}
+
+// Affiliate system
+model Affiliate {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  
+  // Affiliate info
+  referralCode    String   @unique
+  commissionRate  Float    @default(0.10) // 10% default
+  totalEarnings   Float    @default(0)
+  pendingEarnings Float    @default(0)
+  
+  // Bank details for payouts
+  bankAccount String?
+  paypalEmail String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  referrals AffiliateReferral[]
+  payouts   AffiliatePayout[]
+  
+  @@map("affiliates")
+}
+
+// Track affiliate referrals
+model AffiliateReferral {
+  id          String   @id @default(cuid())
+  affiliateId String
+  companyId   String
+  
+  // Commission tracking
+  commissionAmount Float
+  status           String @default("pending") // pending, paid
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
+  
+  @@map("affiliate_referrals")
+}
+
+// Affiliate payouts
+model AffiliatePayout {
+  id          String   @id @default(cuid())
+  affiliateId String
+  
+  amount      Float
+  method      String   // bank_transfer, paypal
+  status      String   @default("pending") // pending, processing, completed, failed
+  
+  // Transaction details
+  transactionId String?
+  paidAt        DateTime?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Cascade)
+  
+  @@map("affiliate_payouts")
+}
+
+// Platform analytics for super admin
+model PlatformAnalytics {
+  id   String   @id @default(cuid())
+  date DateTime @unique @default(now())
+  
+  // Daily metrics
+  totalCompanies      Int   @default(0)
+  activeCompanies     Int   @default(0)
+  totalUsers          Int   @default(0)
+  totalPackages       Int   @default(0)
+  totalRevenue        Float @default(0)
+  newSignups          Int   @default(0)
+  packageVolume       Int   @default(0)
+  
+  createdAt DateTime @default(now())
+  
+  @@map("platform_analytics")
+}
+
+// Multi-currency system with XOF as pivot
+model Currency {
+  id          String   @id @default(cuid())
+  code        String   @unique // USD, EUR, XOF, etc.
+  name        String   // US Dollar, Euro, etc.
+  symbol      String   // $, €, FCFA
+  region      String?  // North America, Europe, West Africa
+  enabled     Boolean  @default(true)
+  is_pivot    Boolean  @default(false) // XOF is pivot
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  fx_rates_from FxRate[] @relation("FromCurrency")
+  fx_rates_to   FxRate[] @relation("ToCurrency")
+  wallets       Wallet[]
+  orders        Order[]
+  payments      Payment[]
+  
+  @@map("currencies")
+}
+
+// Exchange rates with XOF as base
+model FxRate {
+  id            String   @id @default(cuid())
+  from_currency String   // Always XOF for pivot system
+  to_currency   String   // Target currency
+  rate          Float    // 1 XOF = rate * target_currency
+  provider      String   // openexchangerates, currencylayer, etc.
+  is_stale      Boolean  @default(false)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relations
+  from_curr     Currency @relation("FromCurrency", fields: [from_currency], references: [code])
+  to_curr       Currency @relation("ToCurrency", fields: [to_currency], references: [code])
+  
+  @@unique([from_currency, to_currency])
+  @@map("fx_rates")
+}
+
+// Centralized ads credentials (Super Admin managed)
+model AdsCredential {
+  id                String   @id @default(cuid())
+  provider          String   // meta, google, tiktok
+  
+  // Meta/Facebook credentials
+  app_id            String?
+  app_secret        String?
+  access_token      String?
+  business_id       String?
+  ad_account_id     String?
+  
+  // Google Ads credentials
+  client_id         String?
+  client_secret     String?
+  refresh_token     String?
+  developer_token   String?
+  manager_account_id String?
+  
+  // TikTok credentials
+  advertiser_id     String?
+  secret_key        String?
+  app_key           String?
+  
+  is_active         Boolean  @default(true)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  campaigns         AdsCampaign[]
+  
+  @@unique([provider])
+  @@map("ads_credentials")
+}
+
+// Tenant campaigns routed through centralized tunnel
+model AdsCampaign {
+  id                String   @id @default(cuid())
+  tenant_id         String   // Company/tenant ID
+  credential_id     String   // Reference to centralized credentials
+  
+  // Campaign details
+  name              String
+  provider          String   // meta, google, tiktok
+  external_id       String?  // ID from ad provider
+  
+  // Campaign settings
+  objective         String   // CONVERSIONS, TRAFFIC, etc.
+  status            String   @default("PAUSED") // ACTIVE, PAUSED, DELETED
+  
+  // Budget and bidding
+  daily_budget      Float?
+  lifetime_budget   Float?
+  bid_strategy      String?
+  
+  // Targeting
+  target_audience   Json?    // Audience configuration
+  locations         Json?    // Geographic targeting
+  
+  // Performance metrics (synced from provider)
+  impressions       Int      @default(0)
+  clicks            Int      @default(0)
+  conversions       Int      @default(0)
+  spend             Float    @default(0)
+  
+  // Dates
+  start_date        DateTime?
+  end_date          DateTime?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  credential        AdsCredential @relation(fields: [credential_id], references: [id])
+  spend_entries     AdsSpendLedger[]
+  
+  @@map("ads_campaigns")
+}
+
+// Spend tracking per tenant and provider
+model AdsSpendLedger {
+  id            String   @id @default(cuid())
+  tenant_id     String
+  campaign_id   String
+  provider      String   // meta, google, tiktok
+  
+  // Spend details
+  amount_spent  Float    // In original currency
+  currency      String   // USD, EUR, etc.
+  amount_xof    Float    // Converted to XOF for reporting
+  
+  // Metrics
+  impressions   Int      @default(0)
+  clicks        Int      @default(0)
+  conversions   Int      @default(0)
+  
+  // Date range
+  date_from     DateTime
+  date_to       DateTime
+  
+  createdAt     DateTime @default(now())
+  
+  // Relations
+  campaign      AdsCampaign @relation(fields: [campaign_id], references: [id])
+  
+  @@map("ads_spend_ledger")
+}
+
+// WhatsApp Business integration
+model WhatsAppCredential {
+  id                    String   @id @default(cuid())
+  phone_number_id       String   @unique
+  access_token          String
+  app_id                String
+  app_secret            String
+  webhook_verify_token  String
+  business_account_id   String
+  
+  is_active             Boolean  @default(true)
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  // Relations
+  messages              WhatsAppMessage[]
+  
+  @@map("whatsapp_credentials")
+}
+
+model WhatsAppMessage {
+  id              String   @id @default(cuid())
+  tenant_id       String   // Company/tenant ID
+  credential_id   String   // Reference to WhatsApp credentials
+  
+  // Message details
+  from_number     String
+  to_number       String
+  message_type    String   // text, template, interactive, media
+  content         Json     // Message content
+  
+  // Status tracking
+  status          String   @default("sent") // sent, delivered, read, failed
+  external_id     String?  // WhatsApp message ID
+  
+  // Timestamps
+  sent_at         DateTime @default(now())
+  delivered_at    DateTime?
+  read_at         DateTime?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relations
+  credential      WhatsAppCredential @relation(fields: [credential_id], references: [id])
+  
+  @@map("whatsapp_messages")
+}
+
+// Feature flags for SaaS modules
+model FeatureFlag {
+  id            String   @id @default(cuid())
+  code          String   @unique // DASHBOARD_ANALYTICS, PACKAGES_BULK_IMPORT, etc.
+  name          String   // Human readable name
+  description   String?
+  category      String   // Dashboard, Packages, Clients, etc.
+  module        String   // Specific module within category
+  
+  is_active     Boolean  @default(true)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relations
+  tenant_features TenantFeature[]
+  
+  @@map("feature_flags")
+}
+
+// Tenant-specific feature enablement
+model TenantFeature {
+  id          String   @id @default(cuid())
+  tenant_id   String   // Company ID
+  feature_id  String   // Feature flag ID
+  
+  is_enabled  Boolean  @default(false)
+  enabled_by  String   // plan, addon, manual
+  source_id   String?  // Plan ID or addon ID
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  feature     FeatureFlag @relation(fields: [feature_id], references: [id])
+  
+  @@unique([tenant_id, feature_id])
+  @@map("tenant_features")
+}
+
+// Payment System - Enums
+enum PaymentMode {
+  API_PROPRE
+  DELEGUE
+}
+
+enum PaymentProvider {
+  WAVE
+  ORANGE_MONEY
+  MTN_MONEY
+  PAYSTACK
+  STRIPE
+  FLUTTERWAVE
+  PAYPAL
+}
+
+enum PaymentChannel {
+  CARD
+  MOBILE_MONEY
+  BANK_TRANSFER
+  CASH
+  CHECK
+}
+
+enum PaymentStatus {
+  CREATED
+  PENDING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+  PARTIAL_REFUND
+}
+
+enum PayoutStatus {
+  PENDING
+  REVIEW
+  APPROVED
+  REJECTED
+  PAID
+  FAILED
+}
+
+enum PayoutChannel {
+  ORANGE_MONEY
+  WAVE
+  MTN_MONEY
+  BANK_TRANSFER
+  CASH
+  CHECK
+}
+
+enum WalletScope {
+  OWNER
+  TENANT
+}
+
+enum LedgerType {
+  PAYMENT_CREDIT
+  PLATFORM_FEE
+  PROVIDER_FEE
+  REFUND_DEBIT
+  PAYOUT_DEBIT
+  PAYOUT_FEE
+}
+
+enum AuditScope {
+  OWNER
+  TENANT
+  SYSTEM
+}
+
+enum PaymentLimitLevel {
+  STANDARD
+  VIP
+  ENTERPRISE
+}
+
+// Payment Providers (Owner/Platform level)
+model OwnerPaymentProvider {
+  id           String          @id @default(cuid())
+  provider     PaymentProvider
+  credentials  String          // Encrypted JSON
+  active       Boolean         @default(true)
+  created_at   DateTime        @default(now())
+  updated_at   DateTime        @updatedAt
+
+  @@map("owner_payment_providers")
+}
+
+// Tenant Payment Mode
+model TenantPaymentMode {
+  tenant_id  String      @id
+  mode       PaymentMode
+  since_at   DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+
+  // Relations
+  company Company @relation(fields: [tenant_id], references: [id], onDelete: Cascade)
+
+  @@map("tenant_payment_mode")
+}
+
+// Tenant Payment Providers (for API_PROPRE mode)
+model TenantPaymentProvider {
+  id          String          @id @default(cuid())
+  tenant_id   String
+  provider    PaymentProvider
+  credentials String          // Encrypted JSON
+  active      Boolean         @default(true)
+  created_at  DateTime        @default(now())
+  updated_at  DateTime        @updatedAt
+
+  // Relations
+  company Company @relation(fields: [tenant_id], references: [id], onDelete: Cascade)
+
+  @@map("tenant_payment_providers")
+}
+
+// Wallets (XOF pivot)
+model Wallet {
+  id           String      @id @default(cuid())
+  scope        WalletScope
+  scope_id     String      // tenant_id for TENANT, 'owner' for OWNER
+  currency_code String     @default("XOF")
+  balance_xof  Decimal     @default(0) @db.Decimal(18, 6)
+  locked_xof   Decimal     @default(0) @db.Decimal(18, 6)
+  updated_at   DateTime    @updatedAt
+
+  // Relations
+  currency Currency @relation(fields: [currency_code], references: [code])
+
+  @@unique([scope, scope_id, currency_code])
+  @@map("wallets")
+}
+
+// Orders (Customer payments)
+model Order {
+  id            String        @id @default(cuid())
+  tenant_id     String
+  customer_id   String?       // Optional customer reference
+  reference     String        @unique
+  currency_code String
+  amount_ccy    Decimal       @db.Decimal(18, 6)
+  amount_xof    Decimal       @db.Decimal(18, 6)
+  fx_rate_used  Decimal       @db.Decimal(18, 8)
+  status        PaymentStatus @default(CREATED)
+  created_at    DateTime      @default(now())
+  updated_at    DateTime      @updatedAt
+
+  // Relations
+  company  Company   @relation(fields: [tenant_id], references: [id], onDelete: Cascade)
+  currency Currency  @relation(fields: [currency_code], references: [code])
+  payments Payment[]
+  refunds  Refund[]
+
+  @@map("orders")
+}
+
+// Payments (Individual payment attempts)
+model Payment {
+  id           String          @id @default(cuid())
+  order_id     String
+  provider     PaymentProvider
+  channel      PaymentChannel
+  currency_code String
+  amount_ccy   Decimal         @db.Decimal(18, 6)
+  amount_xof   Decimal         @db.Decimal(18, 6)
+  fx_rate_used Decimal         @db.Decimal(18, 8)
+  status       PaymentStatus   @default(PENDING)
+  provider_ref String?         // Provider transaction reference
+  raw_json     String?         // Raw webhook data
+  created_at   DateTime        @default(now())
+  updated_at   DateTime        @updatedAt
+
+  // Relations
+  order    Order     @relation(fields: [order_id], references: [id], onDelete: Cascade)
+  currency Currency  @relation(fields: [currency_code], references: [code])
+  refunds  Refund[]
+
+  @@map("payments")
+}
+
+// Refunds
+model Refund {
+  id         String        @id @default(cuid())
+  payment_id String?       // Can be null for manual refunds
+  order_id   String
+  amount_xof Decimal       @db.Decimal(18, 6)
+  reason     String?
+  status     PaymentStatus @default(PENDING)
+  created_at DateTime      @default(now())
+  updated_at DateTime      @updatedAt
+
+  // Relations
+  payment Payment? @relation(fields: [payment_id], references: [id])
+  order   Order    @relation(fields: [order_id], references: [id], onDelete: Cascade)
+
+  @@map("refunds")
+}
+
+// Ledger Entries (Double-entry bookkeeping)
+model LedgerEntry {
+  id         String     @id @default(cuid())
+  scope      WalletScope
+  scope_id   String
+  type       LedgerType
+  amount_xof Decimal    @db.Decimal(18, 6)
+  meta_json  String?    // Additional metadata
+  created_at DateTime   @default(now())
+
+  @@map("ledger_entries")
+}
+
+// Payout Requests (DELEGUE mode)
+model PayoutRequest {
+  id               String        @id @default(cuid())
+  tenant_id        String
+  request_xof      Decimal       @db.Decimal(18, 6)
+  requested_ccy    String?       // Original currency if different from XOF
+  requested_amount Decimal?      @db.Decimal(18, 6)
+  target_channel   PayoutChannel
+  target_details   String        // JSON with channel-specific details
+  status           PayoutStatus  @default(PENDING)
+  created_by       String
+  created_at       DateTime      @default(now())
+  reviewed_by      String?
+  reviewed_at      DateTime?
+  paid_at          DateTime?
+  evidence_url     String?       // Proof of payment
+  notes            String?
+
+  // Relations
+  company     Company @relation(fields: [tenant_id], references: [id], onDelete: Cascade)
+  created_user User   @relation("PayoutCreatedBy", fields: [created_by], references: [id])
+  reviewed_user User? @relation("PayoutReviewedBy", fields: [reviewed_by], references: [id])
+
+  @@map("payout_requests")
+}
+
+// Payment Limits
+model PaymentLimit {
+  id                    String             @id @default(cuid())
+  level                 PaymentLimitLevel  @unique
+  max_providers         Int                @default(2)
+  daily_payout_cap_xof  Decimal            @db.Decimal(18, 6)
+  kyc_required          Boolean            @default(false)
+  created_at            DateTime           @default(now())
+
+  // Relations
+  tenant_limits TenantPaymentLimit[]
+
+  @@map("payment_limits")
+}
+
+// Tenant Payment Limits
+model TenantPaymentLimit {
+  tenant_id String             @id
+  level     PaymentLimitLevel
+
+  // Relations
+  company Company      @relation(fields: [tenant_id], references: [id], onDelete: Cascade)
+  limit   PaymentLimit @relation(fields: [level], references: [level])
+
+  @@map("tenant_payment_limits")
+}
+
+// Audit Logs
+model AuditLog {
+  id         String     @id @default(cuid())
+  actor_type AuditScope
+  actor_id   String
+  action     String
+  entity     String
+  entity_id  String
+  payload    String?    // JSON
+  ip_address String?
+  user_agent String?
+  created_at DateTime   @default(now())
+
+  @@map("audit_logs")
+}
+
+// Webhook Events
+model WebhookEvent {
+  id         String   @id @default(cuid())
+  provider   PaymentProvider
+  event_type String
+  raw_json   String
+  processed  Boolean  @default(false)
+  created_at DateTime @default(now())
+
+  @@map("webhook_events")
+}

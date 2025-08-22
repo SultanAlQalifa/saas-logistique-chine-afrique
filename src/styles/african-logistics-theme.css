@@ -1,0 +1,344 @@
+/* Thème Logistique Africaine - Couleurs et styles modernes */
+
+:root {
+  /* Couleurs principales inspirées de l'Afrique */
+  --primary-orange: #FF6B35; /* Orange terre cuite */
+  --primary-gold: #F7931E; /* Or africain */
+  --primary-green: #2E8B57; /* Vert forêt */
+  --primary-blue: #1E3A8A; /* Bleu océan */
+  --primary-red: #DC2626; /* Rouge terre */
+  
+  /* Couleurs secondaires */
+  --secondary-sand: #F5E6D3; /* Sable du Sahara */
+  --secondary-earth: #8B4513; /* Terre rouge */
+  --secondary-sky: #87CEEB; /* Ciel africain */
+  --secondary-sunset: #FF8C69; /* Coucher de soleil */
+  
+  /* Couleurs neutres modernes */
+  --neutral-50: #FAFAF9;
+  --neutral-100: #F5F5F4;
+  --neutral-200: #E7E5E4;
+  --neutral-300: #D6D3D1;
+  --neutral-400: #A8A29E;
+  --neutral-500: #78716C;
+  --neutral-600: #57534E;
+  --neutral-700: #44403C;
+  --neutral-800: #292524;
+  --neutral-900: #1C1917;
+  
+  /* Gradients africains */
+  --gradient-sunset: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  --gradient-earth: linear-gradient(135deg, #8B4513 0%, #CD853F 100%);
+  --gradient-ocean: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+  --gradient-forest: linear-gradient(135deg, #2E8B57 0%, #48CC6C 100%);
+  
+  /* Shadows modernes */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Bordures */
+  --border-radius-sm: 0.375rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+}
+
+/* Classes utilitaires pour le thème africain */
+.bg-african-sunset {
+  background: var(--gradient-sunset);
+}
+
+.bg-african-earth {
+  background: var(--gradient-earth);
+}
+
+.bg-african-ocean {
+  background: var(--gradient-ocean);
+}
+
+.bg-african-forest {
+  background: var(--gradient-forest);
+}
+
+.text-african-orange {
+  color: var(--primary-orange);
+}
+
+.text-african-gold {
+  color: var(--primary-gold);
+}
+
+.text-african-green {
+  color: var(--primary-green);
+}
+
+.text-african-blue {
+  color: var(--primary-blue);
+}
+
+/* Cards avec style africain moderne */
+.african-card {
+  background: white;
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--neutral-200);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.african-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-sunset);
+}
+
+.african-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Boutons avec style africain */
+.btn-african-primary {
+  background: var(--gradient-sunset);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-lg);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-african-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.1);
+}
+
+.btn-african-secondary {
+  background: var(--gradient-forest);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-lg);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-african-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.1);
+}
+
+/* Stats cards avec motifs africains */
+.stats-card-orange {
+  background: var(--gradient-sunset);
+  color: white;
+  border-radius: var(--border-radius-xl);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-card-orange::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.stats-card-green {
+  background: var(--gradient-forest);
+  color: white;
+  border-radius: var(--border-radius-xl);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-card-green::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.stats-card-blue {
+  background: var(--gradient-ocean);
+  color: white;
+  border-radius: var(--border-radius-xl);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-card-blue::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* Navigation avec style africain */
+.african-nav {
+  background: linear-gradient(135deg, var(--neutral-900) 0%, var(--neutral-800) 100%);
+  border-right: 3px solid var(--primary-orange);
+}
+
+.african-nav-item {
+  color: var(--neutral-300);
+  transition: all 0.3s ease;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
+  margin: 0.25rem 0;
+}
+
+.african-nav-item:hover {
+  background: rgba(255, 107, 53, 0.1);
+  color: var(--primary-orange);
+  transform: translateX(4px);
+}
+
+.african-nav-item.active {
+  background: var(--gradient-sunset);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+/* Headers avec style africain */
+.african-header {
+  background: linear-gradient(135deg, var(--neutral-50) 0%, var(--secondary-sand) 100%);
+  border-bottom: 2px solid var(--primary-orange);
+  padding: 1.5rem 0;
+}
+
+/* Tables avec style africain */
+.african-table {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.african-table thead {
+  background: linear-gradient(135deg, var(--neutral-100) 0%, var(--secondary-sand) 100%);
+}
+
+.african-table tbody tr:hover {
+  background: rgba(255, 107, 53, 0.05);
+}
+
+/* Badges avec style africain */
+.badge-african-success {
+  background: var(--gradient-forest);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-african-warning {
+  background: var(--gradient-sunset);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-african-info {
+  background: var(--gradient-ocean);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Animations africaines */
+@keyframes african-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes african-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.african-pulse {
+  animation: african-pulse 2s infinite;
+}
+
+.african-bounce {
+  animation: african-bounce 1s infinite;
+}
+
+/* Responsive design pour mobile */
+@media (max-width: 768px) {
+  .african-card {
+    margin: 0.5rem;
+    border-radius: var(--border-radius-lg);
+  }
+  
+  .btn-african-primary,
+  .btn-african-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .stats-card-orange,
+  .stats-card-green,
+  .stats-card-blue {
+    padding: 1rem;
+  }
+}
+
+/* Motifs décoratifs africains */
+.african-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(247, 147, 30, 0.1) 0%, transparent 50%);
+}
+
+.african-border {
+  border-image: linear-gradient(45deg, var(--primary-orange), var(--primary-gold), var(--primary-green)) 1;
+  border-width: 2px;
+  border-style: solid;
+}

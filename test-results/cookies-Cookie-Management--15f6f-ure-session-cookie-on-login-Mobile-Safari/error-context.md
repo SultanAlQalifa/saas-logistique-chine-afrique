@@ -1,0 +1,415 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - navigation [ref=e4]:
+        - generic [ref=e6]:
+          - link "NextMove" [ref=e8]:
+            - /url: /
+            - img "NextMove" [ref=e10] [cursor=pointer]
+          - button [ref=e11] [cursor=pointer]:
+            - img [ref=e12] [cursor=pointer]
+      - generic [ref=e18]:
+        - heading "SaaS Logistique Chine-Afrique" [level=1] [ref=e19]:
+          - generic [ref=e20]: SaaS Logistique
+          - generic [ref=e21]: Chine-Afrique
+        - paragraph [ref=e22]: La plateforme de référence pour vos échanges commerciaux entre la Chine et l'Afrique. Suivi en temps réel, transparence totale, livraison garantie.
+        - generic [ref=e23]:
+          - link "Essai gratuit 14 jours" [ref=e24]:
+            - /url: /dashboard
+            - text: Essai gratuit 14 jours
+            - img [ref=e25]
+          - link "Suivre un colis" [ref=e27]:
+            - /url: /tracking
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - img [ref=e30]
+            - generic [ref=e34]: 50,000+
+            - generic [ref=e35]: Colis traités
+          - generic [ref=e36]:
+            - img [ref=e37]
+            - generic [ref=e40]: "15"
+            - generic [ref=e41]: Pays UEMOA/CEMAC
+          - generic [ref=e42]:
+            - img [ref=e43]
+            - generic [ref=e46]: 99.8%
+            - generic [ref=e47]: Taux de livraison
+          - generic [ref=e48]:
+            - img [ref=e49]
+            - generic [ref=e52]: 24/7
+            - generic [ref=e53]: Support client
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - heading "Pourquoi choisir notre plateforme ?" [level=2] [ref=e60]
+          - paragraph [ref=e61]: Une solution complète et innovante pour optimiser vos échanges commerciaux
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - img [ref=e65]
+            - heading "Couverture Totale" [level=3] [ref=e68]
+            - paragraph [ref=e69]: Présent dans tous les pays UEMOA et CEMAC avec un réseau de partenaires fiables
+            - list [ref=e70]:
+              - listitem [ref=e71]: • 15 pays couverts
+              - listitem [ref=e72]: • 50+ partenaires locaux
+              - listitem [ref=e73]: • Support multilingue
+          - generic [ref=e74]:
+            - img [ref=e76]
+            - heading "Performance Exceptionnelle" [level=3] [ref=e79]
+            - paragraph [ref=e80]: Des résultats qui parlent d'eux-mêmes avec une satisfaction client inégalée
+            - list [ref=e81]:
+              - listitem [ref=e82]: • 99.8% de livraisons réussies
+              - listitem [ref=e83]: • Délais respectés à 95%
+              - listitem [ref=e84]: • 0 colis perdus en 2024
+          - generic [ref=e85]:
+            - img [ref=e87]
+            - heading "Sécurité Maximale" [level=3] [ref=e89]
+            - paragraph [ref=e90]: Vos marchandises sont protégées à chaque étape du processus
+            - list [ref=e91]:
+              - listitem [ref=e92]: • Assurance tous risques
+              - listitem [ref=e93]: • Suivi GPS en temps réel
+              - listitem [ref=e94]: • Certification ISO 9001
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - heading "Nos Routes Commerciales" [level=2] [ref=e98]
+          - paragraph [ref=e99]: Connexions directes entre les principales villes chinoises et africaines
+        - generic [ref=e100]:
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]:
+                - img [ref=e104]
+                - generic [ref=e108]: Maritime
+              - generic [ref=e109]: 25 jours
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - img [ref=e112]
+                - text: Guangzhou
+              - img [ref=e115]
+              - generic [ref=e117]:
+                - img [ref=e118]
+                - text: Abidjan
+          - generic [ref=e121]:
+            - generic [ref=e122]:
+              - generic [ref=e123]:
+                - img [ref=e124]
+                - generic [ref=e126]: Aérien
+              - generic [ref=e127]: 3 jours
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - img [ref=e130]
+                - text: Shenzhen
+              - img [ref=e133]
+              - generic [ref=e135]:
+                - img [ref=e136]
+                - text: Lagos
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - generic [ref=e141]:
+                - img [ref=e142]
+                - generic [ref=e146]: Maritime Express
+              - generic [ref=e147]: 18 jours
+            - generic [ref=e148]:
+              - generic [ref=e149]:
+                - img [ref=e150]
+                - text: Shanghai
+              - img [ref=e153]
+              - generic [ref=e155]:
+                - img [ref=e156]
+                - text: Dakar
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e161]:
+                - img [ref=e162]
+                - generic [ref=e164]: Aérien Express
+              - generic [ref=e165]: 1 jour
+            - generic [ref=e166]:
+              - generic [ref=e167]:
+                - img [ref=e168]
+                - text: Beijing
+              - img [ref=e171]
+              - generic [ref=e173]:
+                - img [ref=e174]
+                - text: Casablanca
+      - generic [ref=e178]:
+        - generic [ref=e179]:
+          - heading "Ce que disent nos clients" [level=2] [ref=e180]
+          - paragraph [ref=e181]: La satisfaction de nos clients est notre priorité absolue
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - generic [ref=e184]:
+              - img [ref=e185]
+              - img [ref=e187]
+              - img [ref=e189]
+              - img [ref=e191]
+              - img [ref=e193]
+            - paragraph [ref=e195]: "\"Cette plateforme a révolutionné notre gestion logistique. Suivi en temps réel et transparence totale.\""
+            - generic [ref=e196]:
+              - generic [ref=e197]: Amadou Diallo
+              - generic [ref=e198]: Import-Export Sahel
+          - generic [ref=e199]:
+            - generic [ref=e200]:
+              - img [ref=e201]
+              - img [ref=e203]
+              - img [ref=e205]
+              - img [ref=e207]
+              - img [ref=e209]
+            - paragraph [ref=e211]: "\"Excellent service ! Nos colis arrivent toujours à temps et en parfait état.\""
+            - generic [ref=e212]:
+              - generic [ref=e213]: Marie Kouassi
+              - generic [ref=e214]: Trading Côte d'Ivoire
+          - generic [ref=e215]:
+            - generic [ref=e216]:
+              - img [ref=e217]
+              - img [ref=e219]
+              - img [ref=e221]
+              - img [ref=e223]
+              - img [ref=e225]
+            - paragraph [ref=e227]: "\"Interface intuitive et équipe support réactive. Je recommande vivement !\""
+            - generic [ref=e228]:
+              - generic [ref=e229]: Ibrahim Traoré
+              - generic [ref=e230]: Commerce International Mali
+      - generic [ref=e232]:
+        - heading "Prêt à révolutionner votre logistique ?" [level=2] [ref=e233]
+        - paragraph [ref=e234]: Rejoignez des milliers d'entreprises qui nous font confiance
+        - generic [ref=e235]:
+          - link "Commencer maintenant" [ref=e236]:
+            - /url: /dashboard
+          - link "Voir une démo" [ref=e237]:
+            - /url: /tracking
+      - generic [ref=e239]:
+        - generic [ref=e240]:
+          - heading "Évaluations et Avis" [level=2] [ref=e241]
+          - paragraph [ref=e242]: Découvrez ce que nos utilisateurs pensent de notre plateforme et de nos entreprises partenaires
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - generic [ref=e245]:
+              - img [ref=e247]
+              - heading "Noter la Plateforme" [level=3] [ref=e249]
+              - paragraph [ref=e250]: Partagez votre expérience globale avec NextMove
+            - generic [ref=e251]:
+              - generic [ref=e252]: "4.8"
+              - generic [ref=e253]:
+                - img [ref=e254]
+                - img [ref=e256]
+                - img [ref=e258]
+                - img [ref=e260]
+                - img [ref=e262]
+              - paragraph [ref=e264]: Basé sur 2,847 avis
+              - button "Noter la plateforme" [ref=e265] [cursor=pointer]
+          - generic [ref=e266]:
+            - generic [ref=e267]:
+              - img [ref=e269]
+              - heading "Entreprises Partenaires" [level=3] [ref=e273]
+              - paragraph [ref=e274]: Évaluez les entreprises de logistique
+            - generic [ref=e275]:
+              - generic [ref=e276]:
+                - generic [ref=e277]:
+                  - generic [ref=e278]: L
+                  - generic [ref=e279]:
+                    - generic [ref=e280]: LogiTrans
+                    - generic [ref=e281]:
+                      - img [ref=e282]
+                      - img [ref=e284]
+                      - img [ref=e286]
+                      - img [ref=e288]
+                      - img [ref=e290]
+                      - generic [ref=e292]: "4.9"
+                - generic [ref=e293]: 234 avis
+              - generic [ref=e294]:
+                - generic [ref=e295]:
+                  - generic [ref=e296]: A
+                  - generic [ref=e297]:
+                    - generic [ref=e298]: AfricaCargo
+                    - generic [ref=e299]:
+                      - img [ref=e300]
+                      - img [ref=e302]
+                      - img [ref=e304]
+                      - img [ref=e306]
+                      - img [ref=e308]
+                      - generic [ref=e310]: "4.7"
+                - generic [ref=e311]: 189 avis
+              - button "Voir toutes les entreprises" [ref=e312] [cursor=pointer]
+        - generic [ref=e313]:
+          - heading "Avis récents de nos utilisateurs" [level=3] [ref=e314]
+          - generic [ref=e315]:
+            - generic [ref=e316]:
+              - generic [ref=e317]:
+                - generic [ref=e318]: M
+                - generic [ref=e319]:
+                  - generic [ref=e320]: Mamadou K.
+                  - generic [ref=e321]:
+                    - img [ref=e322]
+                    - img [ref=e324]
+                    - img [ref=e326]
+                    - img [ref=e328]
+                    - img [ref=e330]
+              - paragraph [ref=e332]: "\"Excellent service ! Mes colis arrivent toujours en parfait état et dans les délais. Je recommande vivement cette plateforme.\""
+            - generic [ref=e333]:
+              - generic [ref=e334]:
+                - generic [ref=e335]: A
+                - generic [ref=e336]:
+                  - generic [ref=e337]: Aminata D.
+                  - generic [ref=e338]:
+                    - img [ref=e339]
+                    - img [ref=e341]
+                    - img [ref=e343]
+                    - img [ref=e345]
+                    - img [ref=e347]
+              - paragraph [ref=e349]: "\"Interface très intuitive et équipe support très réactive. Quelques améliorations possibles mais globalement très satisfaite.\""
+            - generic [ref=e350]:
+              - generic [ref=e351]:
+                - generic [ref=e352]: I
+                - generic [ref=e353]:
+                  - generic [ref=e354]: Ibrahim S.
+                  - generic [ref=e355]:
+                    - img [ref=e356]
+                    - img [ref=e358]
+                    - img [ref=e360]
+                    - img [ref=e362]
+                    - img [ref=e364]
+              - paragraph [ref=e366]: "\"Parfait pour mes importations depuis la Chine. Suivi en temps réel et tarifs compétitifs. Rien à redire !\""
+      - generic [ref=e370]:
+        - img [ref=e373]
+        - heading "🎓 Formation Logistique Internationale" [level=3] [ref=e376]
+        - paragraph [ref=e377]: Devenez expert en import-export avec nos formations certifiées
+        - generic [ref=e378]:
+          - button "Voir les formations" [ref=e379] [cursor=pointer]
+          - generic [ref=e380]:
+            - img [ref=e381]
+            - generic [ref=e386]: 4,200+ professionnels formés
+      - contentinfo [ref=e387]:
+        - generic [ref=e388]:
+          - generic [ref=e389]:
+            - generic [ref=e390]:
+              - link "NextMove" [ref=e392]:
+                - /url: /
+                - img "NextMove" [ref=e393] [cursor=pointer]
+              - paragraph [ref=e394]: La plateforme de référence pour vos échanges commerciaux Chine-Afrique
+              - img [ref=e397] [cursor=pointer]
+            - generic [ref=e402]:
+              - heading "Services" [level=3] [ref=e403]
+              - list [ref=e404]:
+                - listitem [ref=e405]:
+                  - link "Gestion des Colis" [ref=e406]:
+                    - /url: /dashboard/packages
+                - listitem [ref=e407]:
+                  - link "Gestion des Cargos" [ref=e408]:
+                    - /url: /dashboard/cargos
+                - listitem [ref=e409]:
+                  - link "Gestion Clients" [ref=e410]:
+                    - /url: /dashboard/contacts/clients
+                - listitem [ref=e411]:
+                  - link "Suivi de Colis" [ref=e412]:
+                    - /url: /tracking
+            - generic [ref=e413]:
+              - heading "Support" [level=3] [ref=e414]
+              - list [ref=e415]:
+                - listitem [ref=e416]:
+                  - link "Centre d'Aide" [ref=e417]:
+                    - /url: "#"
+                - listitem [ref=e418]:
+                  - link "Contact" [ref=e419]:
+                    - /url: "#"
+                - listitem [ref=e420]:
+                  - link "Documentation" [ref=e421]:
+                    - /url: "#"
+                - listitem [ref=e422]:
+                  - link "FAQ" [ref=e423]:
+                    - /url: "#"
+            - generic [ref=e424]:
+              - heading "Informations de Contact" [level=3] [ref=e425]
+              - list [ref=e426]:
+                - listitem [ref=e427]: 📧 contact@nextmove.com
+                - listitem [ref=e428]: 📞 +221 33 123 45 67
+                - listitem [ref=e429]: 📍 Dakar, Côte d'Ivoire
+                - listitem [ref=e430]: 🕒 Support 24/7
+          - paragraph [ref=e432]: © 2024 NextMove Chine-Afrique. Tous droits réservés.
+      - generic [ref=e433]:
+        - button [ref=e434] [cursor=pointer]:
+          - img [ref=e435] [cursor=pointer]
+        - generic [ref=e437]: Calculateur de Prix
+    - contentinfo [ref=e438]:
+      - generic [ref=e439]:
+        - generic [ref=e440]:
+          - generic [ref=e441]:
+            - heading "SaaS Logistique" [level=3] [ref=e442]
+            - paragraph [ref=e443]: Plateforme de gestion logistique entre la Chine et l'Afrique
+            - generic [ref=e444]:
+              - generic [ref=e445]:
+                - img [ref=e446]
+                - generic [ref=e449]: 123 Avenue de la Logistique, Abidjan, Côte d'Ivoire
+              - generic [ref=e450]:
+                - img [ref=e451]
+                - link "+225 01 23 45 67 89" [ref=e453]:
+                  - /url: tel:+225 01 23 45 67 89
+              - generic [ref=e454]:
+                - img [ref=e455]
+                - link "contact@saaslogistique.com" [ref=e458]:
+                  - /url: mailto:contact@saaslogistique.com
+          - generic [ref=e459]:
+            - heading "Liens rapides" [level=4] [ref=e460]
+            - list [ref=e461]:
+              - listitem [ref=e462]:
+                - link "Blog" [ref=e463]:
+                  - /url: /blog
+              - listitem [ref=e464]:
+                - link "Communauté" [ref=e465]:
+                  - /url: /community
+              - listitem [ref=e466]:
+                - link "Documentation" [ref=e467]:
+                  - /url: /documentation
+              - listitem [ref=e468]:
+                - link "Tarifs" [ref=e469]:
+                  - /url: /pricing
+          - generic [ref=e470]:
+            - heading "Services" [level=4] [ref=e471]
+            - list [ref=e472]:
+              - listitem [ref=e473]:
+                - link "Transport Maritime" [ref=e474]:
+                  - /url: /services/maritime
+              - listitem [ref=e475]:
+                - link "Transport Aérien" [ref=e476]:
+                  - /url: /services/aerien
+              - listitem [ref=e477]:
+                - link "Suivi de Colis" [ref=e478]:
+                  - /url: /track
+          - generic [ref=e479]:
+            - heading "Support" [level=4] [ref=e480]
+            - list [ref=e481]:
+              - listitem [ref=e482]:
+                - link "Centre d'Aide" [ref=e483]:
+                  - /url: /help
+              - listitem [ref=e484]:
+                - link "Contact" [ref=e485]:
+                  - /url: /contact
+              - listitem [ref=e486]:
+                - link "FAQ" [ref=e487]:
+                  - /url: /faq
+        - generic [ref=e489]:
+          - generic [ref=e490]:
+            - paragraph [ref=e491]: © 2024 SaaS Logistique. Tous droits réservés.
+            - generic [ref=e492]:
+              - link "Mentions légales" [ref=e493]:
+                - /url: /legal
+              - link "Politique de confidentialité" [ref=e494]:
+                - /url: /legal
+              - link "Cookies" [ref=e495]:
+                - /url: /legal
+          - generic [ref=e496]:
+            - link "Suivez-nous sur facebook" [ref=e497]:
+              - /url: https://facebook.com/saaslogistique
+              - img [ref=e498]
+            - link "Suivez-nous sur twitter" [ref=e500]:
+              - /url: https://twitter.com/saaslogistique
+              - img [ref=e501]
+            - link "Suivez-nous sur linkedin" [ref=e503]:
+              - /url: https://linkedin.com/company/saaslogistique
+              - img [ref=e504]
+    - generic [ref=e509]:
+      - button "Ouvrir le Support" [ref=e510] [cursor=pointer]:
+        - img [ref=e511] [cursor=pointer]
+      - generic [ref=e515]: "!"
+      - generic:
+        - generic: 💬 Support - Disponible 24/7
+  - alert [ref=e516]
+```

@@ -1,0 +1,145 @@
+/* Theme CSS Variables */
+:root {
+  /* Light theme colors */
+  --color-background: #ffffff;
+  --color-foreground: #1f2937;
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --color-muted: #f8fafc;
+  --color-border: #e5e7eb;
+  --color-card: #ffffff;
+  --color-card-foreground: #1f2937;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1f2937;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #0f172a;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fef2f2;
+  --color-success: #10b981;
+  --color-success-foreground: #ecfdf5;
+  --color-warning: #f59e0b;
+  --color-warning-foreground: #fffbeb;
+  --color-info: #3b82f6;
+  --color-info-foreground: #eff6ff;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+  --color-background: #0f172a;
+  --color-foreground: #f1f5f9;
+  --color-primary: #60a5fa;
+  --color-secondary: #94a3b8;
+  --color-muted: #1e293b;
+  --color-border: #334155;
+  --color-card: #1e293b;
+  --color-card-foreground: #f1f5f9;
+  --color-popover: #1e293b;
+  --color-popover-foreground: #f1f5f9;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #334155;
+  --color-accent-foreground: #f1f5f9;
+  --color-destructive: #f87171;
+  --color-destructive-foreground: #450a0a;
+  --color-success: #34d399;
+  --color-success-foreground: #064e3b;
+  --color-warning: #fbbf24;
+  --color-warning-foreground: #451a03;
+  --color-info: #60a5fa;
+  --color-info-foreground: #1e3a8a;
+}
+
+/* Auto theme - follows system preference */
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --color-background: #0f172a;
+    --color-foreground: #f1f5f9;
+    --color-primary: #60a5fa;
+    --color-secondary: #94a3b8;
+    --color-muted: #1e293b;
+    --color-border: #334155;
+    --color-card: #1e293b;
+    --color-card-foreground: #f1f5f9;
+    --color-popover: #1e293b;
+    --color-popover-foreground: #f1f5f9;
+    --color-muted-foreground: #94a3b8;
+    --color-accent: #334155;
+    --color-accent-foreground: #f1f5f9;
+    --color-destructive: #f87171;
+    --color-destructive-foreground: #450a0a;
+    --color-success: #34d399;
+    --color-success-foreground: #064e3b;
+    --color-warning: #fbbf24;
+    --color-warning-foreground: #451a03;
+    --color-info: #60a5fa;
+    --color-info-foreground: #1e3a8a;
+  }
+}
+
+/* Theme transition animations */
+* {
+  transition: background-color 150ms ease-in-out, 
+              border-color 150ms ease-in-out, 
+              color 150ms ease-in-out,
+              fill 150ms ease-in-out,
+              stroke 150ms ease-in-out;
+}
+
+/* Base styles that use theme variables */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Utility classes for theme colors */
+.bg-background { background-color: var(--color-background); }
+.bg-foreground { background-color: var(--color-foreground); }
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-muted { background-color: var(--color-muted); }
+.bg-card { background-color: var(--color-card); }
+.bg-popover { background-color: var(--color-popover); }
+.bg-accent { background-color: var(--color-accent); }
+
+.text-background { color: var(--color-background); }
+.text-foreground { color: var(--color-foreground); }
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-muted { color: var(--color-muted-foreground); }
+.text-card-foreground { color: var(--color-card-foreground); }
+.text-popover-foreground { color: var(--color-popover-foreground); }
+.text-accent-foreground { color: var(--color-accent-foreground); }
+
+.border-border { border-color: var(--color-border); }
+.border-primary { border-color: var(--color-primary); }
+.border-secondary { border-color: var(--color-secondary); }
+
+/* Status colors */
+.bg-destructive { background-color: var(--color-destructive); }
+.bg-success { background-color: var(--color-success); }
+.bg-warning { background-color: var(--color-warning); }
+.bg-info { background-color: var(--color-info); }
+
+.text-destructive { color: var(--color-destructive); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-info { color: var(--color-info); }
+
+.text-destructive-foreground { color: var(--color-destructive-foreground); }
+.text-success-foreground { color: var(--color-success-foreground); }
+.text-warning-foreground { color: var(--color-warning-foreground); }
+.text-info-foreground { color: var(--color-info-foreground); }
+
+/* Focus styles that adapt to theme */
+.focus-visible\:ring-primary:focus-visible {
+  --tw-ring-color: var(--color-primary);
+}
+
+/* Hover states that adapt to theme */
+.hover\:bg-accent:hover {
+  background-color: var(--color-accent);
+}
+
+.hover\:text-accent-foreground:hover {
+  color: var(--color-accent-foreground);
+}

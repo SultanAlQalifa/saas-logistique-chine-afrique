@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <!-- Globe with airplane icon -->
+  <g transform="translate(10, 10)">
+    <!-- Outer circle -->
+    <circle cx="40" cy="40" r="35" fill="none" stroke="#1e40af" stroke-width="2"/>
+    
+    <!-- Globe grid lines -->
+    <ellipse cx="40" cy="40" rx="35" ry="15" fill="none" stroke="#1e40af" stroke-width="1"/>
+    <ellipse cx="40" cy="40" rx="35" ry="25" fill="none" stroke="#1e40af" stroke-width="1"/>
+    <line x1="5" y1="40" x2="75" y2="40" stroke="#1e40af" stroke-width="1"/>
+    <line x1="40" y1="5" x2="40" y2="75" stroke="#1e40af" stroke-width="1"/>
+    
+    <!-- Airplane icon -->
+    <path d="M35 35 L45 35 L50 30 L52 32 L47 37 L45 45 L43 45 L45 37 L35 37 L30 42 L28 40 L33 35 Z" fill="#1e40af"/>
+    
+    <!-- Small decorative elements around globe -->
+    <circle cx="20" cy="20" r="2" fill="#f97316"/>
+    <circle cx="60" cy="25" r="2" fill="#f97316"/>
+    <circle cx="65" cy="55" r="2" fill="#f97316"/>
+    <circle cx="25" cy="65" r="2" fill="#f97316"/>
+  </g>
+  
+  <!-- NextMove text -->
+  <g transform="translate(100, 30)">
+    <!-- Next in orange -->
+    <text x="0" y="30" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#f97316">Next</text>
+    
+    <!-- Move in blue -->
+    <text x="100" y="30" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#1e40af">Move</text>
+  </g>
+</svg>

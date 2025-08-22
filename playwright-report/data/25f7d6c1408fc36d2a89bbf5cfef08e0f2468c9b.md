@@ -1,0 +1,169 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - navigation "Navigation principale" [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e6]:
+            - img [ref=e8]
+            - generic [ref=e13]: NextMove
+          - button "Épingler la sidebar" [ref=e14] [cursor=pointer]:
+            - img [ref=e15] [cursor=pointer]
+        - generic [ref=e21]:
+          - img [ref=e22]
+          - textbox "Rechercher..." [ref=e25]
+        - generic [ref=e26]:
+          - button "dashboard.title 1 modules" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29] [cursor=pointer]:
+              - generic [ref=e30] [cursor=pointer]:
+                - img [ref=e32] [cursor=pointer]
+                - generic [ref=e37] [cursor=pointer]:
+                  - heading "dashboard.title" [level=3] [ref=e38] [cursor=pointer]
+                  - paragraph [ref=e39] [cursor=pointer]: 1 modules
+              - img [ref=e41] [cursor=pointer]
+          - button "Commissions 1 modules" [ref=e44] [cursor=pointer]:
+            - generic [ref=e45] [cursor=pointer]:
+              - generic [ref=e46] [cursor=pointer]:
+                - img [ref=e48] [cursor=pointer]
+                - generic [ref=e51] [cursor=pointer]:
+                  - heading "Commissions" [level=3] [ref=e52] [cursor=pointer]
+                  - paragraph [ref=e53] [cursor=pointer]: 1 modules
+              - img [ref=e55] [cursor=pointer]
+          - button "Programme Fidélité 3 modules" [ref=e58] [cursor=pointer]:
+            - generic [ref=e59] [cursor=pointer]:
+              - generic [ref=e60] [cursor=pointer]:
+                - img [ref=e62] [cursor=pointer]
+                - generic [ref=e69] [cursor=pointer]:
+                  - heading "Programme Fidélité" [level=3] [ref=e70] [cursor=pointer]
+                  - paragraph [ref=e71] [cursor=pointer]: 3 modules
+              - img [ref=e73] [cursor=pointer]
+          - button "Mon Compte 3 modules" [ref=e76] [cursor=pointer]:
+            - generic [ref=e77] [cursor=pointer]:
+              - generic [ref=e78] [cursor=pointer]:
+                - img [ref=e80] [cursor=pointer]
+                - generic [ref=e83] [cursor=pointer]:
+                  - heading "Mon Compte" [level=3] [ref=e84] [cursor=pointer]
+                  - paragraph [ref=e85] [cursor=pointer]: 3 modules
+              - img [ref=e87] [cursor=pointer]
+      - generic [ref=e89]:
+        - generic [ref=e93]:
+          - button "3" [ref=e95] [cursor=pointer]:
+            - img [ref=e96] [cursor=pointer]
+            - generic [ref=e99] [cursor=pointer]: "3"
+          - button "🇫🇷 FR" [ref=e101] [cursor=pointer]:
+            - img [ref=e102] [cursor=pointer]
+            - text: 🇫🇷 FR
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - paragraph [ref=e111]: Utilisateur Admin
+              - paragraph [ref=e112]: Mode Test
+            - link "Site Public" [ref=e113] [cursor=pointer]:
+              - /url: /
+              - img [ref=e114] [cursor=pointer]
+              - text: Site Public
+            - button "Déconnexion" [ref=e118] [cursor=pointer]:
+              - img [ref=e119] [cursor=pointer]
+              - text: Déconnexion
+        - main [ref=e123]:
+          - generic [ref=e126]:
+            - img [ref=e128]
+            - heading "Accès Refusé" [level=1] [ref=e132]
+            - paragraph [ref=e133]: Vous n'avez pas les permissions nécessaires pour accéder au dashboard.
+            - paragraph [ref=e135]: "Votre rôle:"
+      - generic [ref=e137]:
+        - button "Ouvrir le Support" [ref=e138] [cursor=pointer]:
+          - img [ref=e139] [cursor=pointer]
+        - generic [ref=e144]: "!"
+        - generic:
+          - generic: 💬 Support - Disponible 24/7
+      - generic [ref=e145]:
+        - button [ref=e146] [cursor=pointer]:
+          - img [ref=e147] [cursor=pointer]
+        - generic [ref=e158]: Calculateur de Prix
+    - contentinfo [ref=e159]:
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - generic [ref=e162]:
+            - heading "SaaS Logistique" [level=3] [ref=e163]
+            - paragraph [ref=e164]: Plateforme de gestion logistique entre la Chine et l'Afrique
+            - generic [ref=e165]:
+              - generic [ref=e166]:
+                - img [ref=e167]
+                - generic [ref=e170]: 123 Avenue de la Logistique, Abidjan, Côte d'Ivoire
+              - generic [ref=e171]:
+                - img [ref=e172]
+                - link "+225 01 23 45 67 89" [ref=e174] [cursor=pointer]:
+                  - /url: tel:+225 01 23 45 67 89
+              - generic [ref=e175]:
+                - img [ref=e176]
+                - link "contact@saaslogistique.com" [ref=e179] [cursor=pointer]:
+                  - /url: mailto:contact@saaslogistique.com
+          - generic [ref=e180]:
+            - heading "Liens rapides" [level=4] [ref=e181]
+            - list [ref=e182]:
+              - listitem [ref=e183]:
+                - link "Blog" [ref=e184] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e185]:
+                - link "Communauté" [ref=e186] [cursor=pointer]:
+                  - /url: /community
+              - listitem [ref=e187]:
+                - link "Documentation" [ref=e188] [cursor=pointer]:
+                  - /url: /documentation
+              - listitem [ref=e189]:
+                - link "Tarifs" [ref=e190] [cursor=pointer]:
+                  - /url: /pricing
+          - generic [ref=e191]:
+            - heading "Services" [level=4] [ref=e192]
+            - list [ref=e193]:
+              - listitem [ref=e194]:
+                - link "Transport Maritime" [ref=e195] [cursor=pointer]:
+                  - /url: /services/maritime
+              - listitem [ref=e196]:
+                - link "Transport Aérien" [ref=e197] [cursor=pointer]:
+                  - /url: /services/aerien
+              - listitem [ref=e198]:
+                - link "Suivi de Colis" [ref=e199] [cursor=pointer]:
+                  - /url: /track
+          - generic [ref=e200]:
+            - heading "Support" [level=4] [ref=e201]
+            - list [ref=e202]:
+              - listitem [ref=e203]:
+                - link "Centre d'Aide" [ref=e204] [cursor=pointer]:
+                  - /url: /help
+              - listitem [ref=e205]:
+                - link "Contact" [ref=e206] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e207]:
+                - link "FAQ" [ref=e208] [cursor=pointer]:
+                  - /url: /faq
+        - generic [ref=e210]:
+          - generic [ref=e211]:
+            - paragraph [ref=e212]: © 2024 SaaS Logistique. Tous droits réservés.
+            - generic [ref=e213]:
+              - link "Mentions légales" [ref=e214] [cursor=pointer]:
+                - /url: /legal
+              - link "Politique de confidentialité" [ref=e215] [cursor=pointer]:
+                - /url: /legal
+              - link "Cookies" [ref=e216] [cursor=pointer]:
+                - /url: /legal
+          - generic [ref=e217]:
+            - link "Suivez-nous sur facebook" [ref=e218] [cursor=pointer]:
+              - /url: https://facebook.com/saaslogistique
+              - img [ref=e219] [cursor=pointer]
+            - link "Suivez-nous sur twitter" [ref=e221] [cursor=pointer]:
+              - /url: https://twitter.com/saaslogistique
+              - img [ref=e222] [cursor=pointer]
+            - link "Suivez-nous sur linkedin" [ref=e224] [cursor=pointer]:
+              - /url: https://linkedin.com/company/saaslogistique
+              - img [ref=e225] [cursor=pointer]
+    - generic [ref=e230]:
+      - button "Ouvrir le Support" [ref=e231] [cursor=pointer]:
+        - img [ref=e232] [cursor=pointer]
+      - generic [ref=e237]: "!"
+      - generic:
+        - generic: 💬 Support - Disponible 24/7
+  - alert [ref=e238]: NextMove - Chine Afrique
+```

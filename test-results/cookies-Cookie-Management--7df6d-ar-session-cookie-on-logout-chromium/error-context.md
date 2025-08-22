@@ -1,0 +1,136 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - link "Retour à l'accueil" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8] [cursor=pointer]
+          - generic [ref=e10] [cursor=pointer]: Retour à l'accueil
+        - link "NextMove" [ref=e11] [cursor=pointer]:
+          - /url: /
+          - img [ref=e13] [cursor=pointer]
+          - generic [ref=e16] [cursor=pointer]: NextMove
+      - generic [ref=e21]:
+        - img [ref=e24]
+        - heading "Connexion à votre compte" [level=2] [ref=e29]
+        - paragraph [ref=e30]: NextMove Chine-Afrique
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - button "👨‍💼 Admin" [ref=e35] [cursor=pointer]
+            - button "🏢 Entreprise" [ref=e36] [cursor=pointer]
+            - button "👤 Client" [ref=e37] [cursor=pointer]
+          - paragraph [ref=e38]: Accès administrateur à la plateforme
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e41]: Adresse email
+            - textbox "Entrez votre email" [ref=e43]: contact@logitrans.com
+          - generic [ref=e44]:
+            - generic [ref=e45]: Mot de passe
+            - generic [ref=e46]:
+              - textbox "Mot de passe" [ref=e47]: company123
+              - button "Afficher le mot de passe" [ref=e49] [cursor=pointer]:
+                - img [ref=e50] [cursor=pointer]
+          - button "Connexion..." [disabled] [ref=e54]
+        - generic [ref=e55]:
+          - generic [ref=e60]: Comptes de Démonstration
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: "Pour les tests :"
+            - generic [ref=e63]:
+              - paragraph [ref=e64]:
+                - strong [ref=e65]: "👨‍💼 Admin:"
+                - code [ref=e66]: admin@platform.com / admin123
+              - paragraph [ref=e67]:
+                - strong [ref=e68]: "🏢 Entreprise:"
+                - code [ref=e69]: contact@logitrans.com / company123
+              - paragraph [ref=e70]:
+                - strong [ref=e71]: "👤 Client:"
+                - code [ref=e72]: client@example.com / client123
+    - contentinfo [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - heading "SaaS Logistique" [level=3] [ref=e77]
+            - paragraph [ref=e78]: Plateforme de gestion logistique entre la Chine et l'Afrique
+            - generic [ref=e79]:
+              - generic [ref=e80]:
+                - img [ref=e81]
+                - generic [ref=e84]: 123 Avenue de la Logistique, Abidjan, Côte d'Ivoire
+              - generic [ref=e85]:
+                - img [ref=e86]
+                - link "+225 01 23 45 67 89" [ref=e88] [cursor=pointer]:
+                  - /url: tel:+225 01 23 45 67 89
+              - generic [ref=e89]:
+                - img [ref=e90]
+                - link "contact@saaslogistique.com" [ref=e93] [cursor=pointer]:
+                  - /url: mailto:contact@saaslogistique.com
+          - generic [ref=e94]:
+            - heading "Liens rapides" [level=4] [ref=e95]
+            - list [ref=e96]:
+              - listitem [ref=e97]:
+                - link "Blog" [ref=e98] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e99]:
+                - link "Communauté" [ref=e100] [cursor=pointer]:
+                  - /url: /community
+              - listitem [ref=e101]:
+                - link "Documentation" [ref=e102] [cursor=pointer]:
+                  - /url: /documentation
+              - listitem [ref=e103]:
+                - link "Tarifs" [ref=e104] [cursor=pointer]:
+                  - /url: /pricing
+          - generic [ref=e105]:
+            - heading "Services" [level=4] [ref=e106]
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "Transport Maritime" [ref=e109] [cursor=pointer]:
+                  - /url: /services/maritime
+              - listitem [ref=e110]:
+                - link "Transport Aérien" [ref=e111] [cursor=pointer]:
+                  - /url: /services/aerien
+              - listitem [ref=e112]:
+                - link "Suivi de Colis" [ref=e113] [cursor=pointer]:
+                  - /url: /track
+          - generic [ref=e114]:
+            - heading "Support" [level=4] [ref=e115]
+            - list [ref=e116]:
+              - listitem [ref=e117]:
+                - link "Centre d'Aide" [ref=e118] [cursor=pointer]:
+                  - /url: /help
+              - listitem [ref=e119]:
+                - link "Contact" [ref=e120] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e121]:
+                - link "FAQ" [ref=e122] [cursor=pointer]:
+                  - /url: /faq
+        - generic [ref=e124]:
+          - generic [ref=e125]:
+            - paragraph [ref=e126]: © 2024 SaaS Logistique. Tous droits réservés.
+            - generic [ref=e127]:
+              - link "Mentions légales" [ref=e128] [cursor=pointer]:
+                - /url: /legal
+              - link "Politique de confidentialité" [ref=e129] [cursor=pointer]:
+                - /url: /legal
+              - link "Cookies" [ref=e130] [cursor=pointer]:
+                - /url: /legal
+          - generic [ref=e131]:
+            - link "Suivez-nous sur facebook" [ref=e132] [cursor=pointer]:
+              - /url: https://facebook.com/saaslogistique
+              - img [ref=e133] [cursor=pointer]
+            - link "Suivez-nous sur twitter" [ref=e135] [cursor=pointer]:
+              - /url: https://twitter.com/saaslogistique
+              - img [ref=e136] [cursor=pointer]
+            - link "Suivez-nous sur linkedin" [ref=e138] [cursor=pointer]:
+              - /url: https://linkedin.com/company/saaslogistique
+              - img [ref=e139] [cursor=pointer]
+    - generic [ref=e144]:
+      - button "Ouvrir le Support" [ref=e145] [cursor=pointer]:
+        - img [ref=e146] [cursor=pointer]
+      - generic [ref=e150]: "!"
+      - generic:
+        - generic: 💬 Support - Disponible 24/7
+  - alert [ref=e151]
+```

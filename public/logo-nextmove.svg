@@ -1,0 +1,66 @@
+<svg width="6000" height="2000" viewBox="0 0 6000 2000" xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- Globe with logistics elements -->
+  <g transform="translate(500, 500)">
+    <!-- Main globe -->
+    <circle cx="500" cy="500" r="400" fill="#4A90E2" stroke="#2E5C8A" stroke-width="30"/>
+    
+    <!-- Globe grid lines -->
+    <ellipse cx="500" cy="500" rx="400" ry="150" fill="none" stroke="#ffffff" stroke-width="20" opacity="0.8"/>
+    <ellipse cx="500" cy="500" rx="150" ry="400" fill="none" stroke="#ffffff" stroke-width="20" opacity="0.8"/>
+    <line x1="100" y1="500" x2="900" y2="500" stroke="#ffffff" stroke-width="15" opacity="0.6"/>
+    <line x1="500" y1="100" x2="500" y2="900" stroke="#ffffff" stroke-width="15" opacity="0.6"/>
+    <ellipse cx="500" cy="500" rx="300" ry="100" fill="none" stroke="#ffffff" stroke-width="12" opacity="0.5"/>
+    <ellipse cx="500" cy="500" rx="100" ry="300" fill="none" stroke="#ffffff" stroke-width="12" opacity="0.5"/>
+    
+    <!-- Orbital ring -->
+    <circle cx="500" cy="500" r="550" fill="none" stroke="#3498DB" stroke-width="20" stroke-dasharray="60,30" opacity="0.7"/>
+    
+    <!-- Airplane -->
+    <g transform="translate(850, 250) rotate(45)">
+      <path d="M0 0 L120 30 L90 60 L30 45 L0 90 L-15 75 L-45 90 L-30 60 L-90 45 L-60 15 Z" fill="#E67E22"/>
+    </g>
+    
+    <!-- Ship -->
+    <g transform="translate(150, 750)">
+      <path d="M0 80 L180 80 L150 120 L30 120 Z" fill="#34495E"/>
+      <rect x="45" y="30" width="90" height="50" fill="#E74C3C"/>
+      <line x1="90" y1="30" x2="90" y2="0" stroke="#34495E" stroke-width="15"/>
+    </g>
+    
+    <!-- Truck -->
+    <g transform="translate(750, 800)">
+      <rect x="0" y="50" width="150" height="80" fill="#34495E"/>
+      <rect x="150" y="30" width="90" height="100" fill="#E74C3C"/>
+      <circle cx="50" cy="150" r="25" fill="#2C3E50"/>
+      <circle cx="190" cy="150" r="25" fill="#2C3E50"/>
+    </g>
+    
+    <!-- Dotted paths -->
+    <path d="M850 350 Q700 450 550 550" fill="none" stroke="#E67E22" stroke-width="20" stroke-dasharray="40,20"/>
+    <path d="M250 750 Q350 650 450 550" fill="none" stroke="#3498DB" stroke-width="20" stroke-dasharray="40,20"/>
+    <path d="M750 800 Q650 700 550 600" fill="none" stroke="#34495E" stroke-width="20" stroke-dasharray="40,20"/>
+  </g>
+  
+  <!-- NextMove Text with modern styling -->
+  <g transform="translate(2000, 600)">
+    <!-- Next -->
+    <text x="0" y="500" font-family="Arial, sans-serif" font-size="640" font-weight="bold" fill="#E67E22">Next</text>
+    <!-- Move -->
+    <text x="1800" y="500" font-family="Arial, sans-serif" font-size="640" font-weight="bold" fill="#2E86AB">Move</text>
+    
+    <!-- Decorative arrow -->
+    <path d="M1650 350 Q1750 250 1850 350" fill="none" stroke="#3498DB" stroke-width="40" stroke-dasharray="60,30"/>
+    <path d="M1820 320 L1860 350 L1820 380 L1840 350 Z" fill="#3498DB"/>
+  </g>
+  
+  <!-- Modern decorative elements -->
+  <g transform="translate(5200, 1000)">
+    <circle cx="0" cy="0" r="50" fill="#E67E22" opacity="0.7"/>
+    <circle cx="120" cy="-80" r="35" fill="#3498DB" opacity="0.6"/>
+    <circle cx="80" cy="120" r="40" fill="#2E86AB" opacity="0.5"/>
+    <!-- Small connecting lines -->
+    <line x1="0" y1="0" x2="80" y2="120" stroke="#34495E" stroke-width="8" opacity="0.3"/>
+    <line x1="120" y1="-80" x2="0" y2="0" stroke="#34495E" stroke-width="6" opacity="0.3"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+[build]
+  publish = ".next"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[context.production.environment]
+  NEXTAUTH_URL = "https://nextmove-cargo-fixed.windsurf.build"
+  NEXTAUTH_SECRET = "your-secret-key-here"

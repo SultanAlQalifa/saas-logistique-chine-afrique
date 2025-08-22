@@ -1,0 +1,177 @@
+{
+  "routes": {
+    "dashboard": {
+      "path": "/dashboard",
+      "component": "dashboard/page",
+      "guards": ["auth"],
+      "i18n": {
+        "fr": "/tableau-de-bord",
+        "en": "/dashboard"
+      }
+    },
+    "packages": {
+      "path": "/dashboard/packages",
+      "component": "dashboard/packages/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"],
+      "i18n": {
+        "fr": "/tableau-de-bord/colis",
+        "en": "/dashboard/packages"
+      }
+    },
+    "packages.detail": {
+      "path": "/dashboard/packages/:id",
+      "component": "dashboard/packages/[id]/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "client.packages": {
+      "path": "/dashboard/client/packages",
+      "component": "dashboard/client/packages/page",
+      "guards": ["auth", "role:CLIENT"]
+    },
+    "mes-colis": {
+      "path": "/dashboard/mes-colis",
+      "component": "dashboard/mes-colis/page",
+      "guards": ["auth"]
+    },
+    "finances": {
+      "path": "/dashboard/finances",
+      "component": "dashboard/finances/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "finances.accounting": {
+      "path": "/dashboard/finances/accounting",
+      "component": "dashboard/finances/accounting/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "finances.invoicing": {
+      "path": "/dashboard/finances/invoicing",
+      "component": "dashboard/finances/invoicing/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "operations": {
+      "path": "/dashboard/operations",
+      "component": "dashboard/operations/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "operations.expeditions": {
+      "path": "/dashboard/operations/expeditions",
+      "component": "dashboard/operations/expeditions/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "operations.expeditions.detail": {
+      "path": "/dashboard/operations/expeditions/:id",
+      "component": "dashboard/operations/expeditions/[id]/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "support": {
+      "path": "/dashboard/support",
+      "component": "dashboard/support/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "support.tickets": {
+      "path": "/dashboard/support/tickets",
+      "component": "dashboard/support/tickets/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "support.tickets.detail": {
+      "path": "/dashboard/support/tickets/:id",
+      "component": "dashboard/support/tickets/[id]/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "support.chatbot": {
+      "path": "/dashboard/support/chatbot",
+      "component": "dashboard/support/chatbot/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "support.allocation": {
+      "path": "/dashboard/support/allocation",
+      "component": "dashboard/support/allocation/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "hr": {
+      "path": "/dashboard/hr",
+      "component": "dashboard/hr/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "projects": {
+      "path": "/dashboard/projects",
+      "component": "dashboard/projects/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "marketing": {
+      "path": "/dashboard/marketing",
+      "component": "dashboard/marketing/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "marketing.integrations": {
+      "path": "/dashboard/marketing/integrations",
+      "component": "dashboard/marketing/integrations/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "analytics": {
+      "path": "/dashboard/analytics",
+      "component": "dashboard/analytics/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "companies": {
+      "path": "/dashboard/companies",
+      "component": "dashboard/companies/page",
+      "guards": ["auth", "role:SUPER_ADMIN"]
+    },
+    "api": {
+      "path": "/dashboard/api",
+      "component": "dashboard/api/page",
+      "guards": ["auth", "role:ADMIN|SUPER_ADMIN"]
+    },
+    "profile": {
+      "path": "/dashboard/profile",
+      "component": "dashboard/profile/page",
+      "guards": ["auth"]
+    },
+    "settings": {
+      "path": "/dashboard/settings",
+      "component": "dashboard/settings/page",
+      "guards": ["auth"]
+    },
+    "track": {
+      "path": "/track",
+      "component": "track/page",
+      "public": true
+    },
+    "track.detail": {
+      "path": "/track/:pin",
+      "component": "track/[pin]/page",
+      "public": true
+    },
+    "auth.signin": {
+      "path": "/auth/signin",
+      "component": "auth/signin/page",
+      "public": true
+    },
+    "auth.signup": {
+      "path": "/auth/signup",
+      "component": "auth/signup/page",
+      "public": true
+    },
+    "home": {
+      "path": "/",
+      "component": "page",
+      "public": true
+    }
+  },
+  "redirects": {
+    "/factures": "/dashboard/finances/invoicing",
+    "/facturation": "/dashboard/finances/invoicing",
+    "/comptabilite": "/dashboard/finances/accounting",
+    "/colis": "/dashboard/packages",
+    "/expeditions": "/dashboard/operations/expeditions",
+    "/tickets": "/dashboard/support/tickets",
+    "/suivi": "/track",
+    "/connexion": "/auth/signin",
+    "/inscription": "/auth/signup"
+  },
+  "aliases": {
+    "/dashboard/client-portal": "/dashboard/client/packages",
+    "/dashboard/portal": "/dashboard/client/packages"
+  }
+}
