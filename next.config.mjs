@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove output export for API routes compatibility
-  poweredByHeader: false,
-  generateEtags: false,
-  
+  // Force server-side rendering for Netlify
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
     serverComponentsExternalPackages: ['@prisma/client'],
@@ -26,14 +23,15 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
   
-  // Performance optimizations for Vercel
+  // Production optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Production optimizations
   swcMinify: true,
   compress: true,
+  poweredByHeader: false,
+  generateEtags: false,
   
   // Headers for security
   async headers() {
@@ -76,4 +74,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+export default nextConfig
