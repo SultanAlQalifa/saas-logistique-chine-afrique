@@ -601,7 +601,7 @@ export default function DashboardPage() {
             Voir tous les colis →
           </Link>
         </div>
-        <PackagesList packages={isDemoMode ? demoPackages : packages} />
+        <PackagesList packages={isDemoMode ? demoPackages as any : packages} />
       </div>
 
       {/* Modal Source de Données */}
