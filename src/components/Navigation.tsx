@@ -139,11 +139,11 @@ export default function Navigation() {
             {/* Auth Buttons */}
             <div className="flex items-center gap-3">
               <Link
-                href={session ? "/dashboard" : "/signin"}
+                href="/dashboard"
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg font-medium text-sm transition-all flex items-center gap-1 border border-white/20"
               >
                 <LogIn className="w-3 h-3" />
-                {t('nav.login')}
+                Dashboard
               </Link>
             </div>
           </div>
@@ -212,11 +212,11 @@ export default function Navigation() {
               {/* Mobile Auth Button */}
               <div className="border-t pt-4">
                 <Link
-                  href={session ? "/dashboard" : "/signin"}
+                  href="/dashboard"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
                 >
                   <LogIn className="w-4 h-4" />
-                  {t('nav.login')}
+                  Dashboard
                 </Link>
               </div>
             </div>
