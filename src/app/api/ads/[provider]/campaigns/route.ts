@@ -3,6 +3,15 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { AdsCentralService } from '@/lib/ads-central'
 
+// Generate static params for supported providers
+export async function generateStaticParams() {
+  return [
+    { provider: 'meta' },
+    { provider: 'google' },
+    { provider: 'tiktok' }
+  ]
+}
+
 // GET /api/ads/[provider]/campaigns - Récupérer les campagnes d'un provider
 export async function GET(
   request: NextRequest,

@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Netlify optimizations
-  output: 'standalone',
+  // Remove output export for API routes compatibility
   poweredByHeader: false,
   generateEtags: false,
   
