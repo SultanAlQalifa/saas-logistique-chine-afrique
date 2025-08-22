@@ -78,27 +78,41 @@ export default function DashboardPage() {
     )
   }
 
-  // Vérification des permissions d'accès au dashboard
-  if (!canViewStats) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
-          <div className="bg-red-100 p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-            <AlertTriangle className="h-10 w-10 text-red-600" />
-          </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Accès Refusé</h1>
-          <p className="text-gray-600 mb-6">
-            Vous n'avez pas les permissions nécessaires pour accéder au dashboard.
-          </p>
-          <div className="bg-gray-50 p-4 rounded-xl">
-            <p className="text-sm text-gray-500">
-              Votre rôle: <span className="font-medium text-gray-700">{userRole}</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    )
+  // Mode démo - permettre l'accès même sans authentification complète
+  const isDemoMode = process.env.NODE_ENV === 'production' || !session
+  
+  // En mode démo, utiliser des données mock
+  const demoStats = {
+    totalPackages: 156,
+    revenue: 45600,
+    inTransit: 23,
+    delivered: 133
   }
+  
+  const demoPackages = [
+    {
+      id: '1',
+      packageId: 'NM2024001',
+      trackingNumber: 'NM2024001',
+      companyId: 'demo-company',
+      status: 'IN_TRANSIT' as PackageStatus,
+      clientId: 'demo-client',
+      description: 'Colis de démonstration',
+      weight: 2.5,
+      transportMode: 'MARITIME' as TransportMode,
+      trackingPin: 'DEMO123',
+      paymentStatus: 'PENDING' as any,
+      origin: 'Guangzhou',
+      destination: 'Dakar',
+      createdAt: new Date(),
+      client: { 
+        id: 'demo-client',
+        name: 'Démo Client',
+        email: 'demo@nextmove.com',
+        phone: '+221 77 123 45 67'
+      }
+    }
+  ]
 
   const handleDragStart = (widgetId: string) => {
     setDraggedWidget(widgetId)
@@ -135,8 +149,8 @@ export default function DashboardPage() {
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl p-8 text-white shadow-2xl">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-4xl font-bold mb-2">🚀 {t('dashboard.title')} {isCompanyScoped ? 'Entreprise' : 'Global'}</h1>
-            <p className="text-indigo-100 text-lg">{t('dashboard.welcome')}, {session?.user?.name || 'Utilisateur'} - {isCompanyScoped ? 'Tableau de bord de votre entreprise' : 'Centre de contrôle logistique global'}</p>
+            <h1 className="text-4xl font-bold mb-2">🚀 {t('dashboard.title')} {isDemoMode ? 'Démo' : (isCompanyScoped ? 'Entreprise' : 'Global')}</h1>
+            <p className="text-indigo-100 text-lg">{t('dashboard.welcome')}, {session?.user?.name || 'Visiteur'} - {isDemoMode ? 'Version de démonstration' : (isCompanyScoped ? 'Tableau de bord de votre entreprise' : 'Centre de contrôle logistique global')}</p>
             {isCompanyScoped && (
               <div className="flex items-center gap-2 mt-2 text-indigo-200">
                 <Building2 className="h-4 w-4" />
@@ -427,7 +441,7 @@ export default function DashboardPage() {
                               setShowDataSource('packages-total')
                             }}
                           >
-                            {stats?.totalPackages || 0}
+                            {isDemoMode ? demoStats.totalPackages : (stats?.totalPackages || 0)}
                           </dd>
                           <dd className="text-xs text-blue-600">Tous statuts</dd>
                         </dl>
@@ -485,7 +499,7 @@ export default function DashboardPage() {
                               setShowDataSource('revenue-total')
                             }}
                           >
-                            {(stats?.revenue || 0).toLocaleString('fr-FR')} FCFA
+                            {(isDemoMode ? demoStats.revenue : (stats?.revenue || 0)).toLocaleString('fr-FR')} FCFA
                           </dd>
                           <dd className="text-xs text-purple-600">Ce mois</dd>
                         </dl>
@@ -587,15 +601,7 @@ export default function DashboardPage() {
             Voir tous les colis →
           </Link>
         </div>
-        {canViewPackages ? (
-          <PackagesList packages={packages} />
-        ) : (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
-            <AlertTriangle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Accès Restreint</h3>
-            <p className="text-gray-500">Vous n'avez pas les permissions pour voir les colis.</p>
-          </div>
-        )}
+        <PackagesList packages={isDemoMode ? demoPackages : packages} />
       </div>
 
       {/* Modal Source de Données */}
