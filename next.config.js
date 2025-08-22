@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Vercel optimizations
-  output: 'standalone',
+  // Netlify optimizations
+  output: 'export',
+  trailingSlash: true,
+  distDir: 'out',
   poweredByHeader: false,
   generateEtags: false,
   
