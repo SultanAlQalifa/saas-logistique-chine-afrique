@@ -1,10 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Production optimizations for Railway
+  // Production optimizations for Netlify
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
     serverComponentsExternalPackages: ['@prisma/client'],
   },
+  
+  // Ensure all pages are included in build
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
   
   images: {
     remotePatterns: [
