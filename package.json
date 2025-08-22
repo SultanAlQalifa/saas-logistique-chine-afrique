@@ -16,7 +16,7 @@
     "reset:numbering": "tsx scripts/reset-numbering-2025.ts",
     "purge:data": "tsx scripts/purge-test-data.ts",
     "prod:prepare": "npm run reset:numbering && npm run purge:data",
-    "vercel:build": "next build",
+    "vercel:build": "prisma generate && next build",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "db:generate": "prisma generate",
