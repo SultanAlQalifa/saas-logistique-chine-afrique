@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Force server-side rendering for Netlify
+  // Production optimizations for Railway
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
     serverComponentsExternalPackages: ['@prisma/client'],
